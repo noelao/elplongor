@@ -1,0 +1,62 @@
+
+<style>
+/* Footer Container */
+.main-footer {
+    min-height: 50vh;
+
+    width: 100%;
+    padding: 20px 0;
+    border-top: 1px solid #eeeeee; /* Garis tipis transparan */
+    background-color: transparent; /* Mengikuti background body */
+    font-family: inherit; /* Menggunakan font utama kamu */
+    margin-top: 1rem;
+
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: #666; /* Warna teks abu-abu minimalis */
+    font-size: 0.9rem;
+}
+
+/* Styling Efek Mengetik */
+.highlight {
+    color: #333; /* Warna lebih gelap untuk teks yang diketik */
+    font-weight: 600;
+}
+
+.cursor {
+    color: #007bff; /* Warna kursor (sesuaikan dengan tema kamu) */
+    font-weight: bold;
+    animation: blink 0.7s infinite;
+    background: #007bff;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+</style>
+
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <p>&copy; 2026 noelao. All rights reserved.</p>
+        </div>
+        
+        <div class="footer-right">
+            <p>Build with Love <span id="typing-text" class="highlight"></span><span class="cursor">💖</span></p>
+            <p>Design inspired by <a target="_blank" href="https://mobbin.com">mobbin</a></p>
+        </div>
+    </div>
+</footer>

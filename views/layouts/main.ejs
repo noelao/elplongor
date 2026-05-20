@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elplongor Base</title>
+    <link rel="preload" href="/fonts/mobbin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navBar.css">
+
+</head>
+
+<body>
+<%- include('../partials/nav', {}) %>
+
+
+<%- body %>
+
+
+<%- include('../partials/footer', {}) %>
+
+<!-- DOMContentLoaded -->
+ <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. Ambil parameter dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetId = urlParams.get('target'); // Mengambil nilai 'section'
+
+    if (targetId) {
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // 2. Beri delay sedikit lalu scroll dengan halus
+        setTimeout(() => {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 50); // Jeda 0.5 detik setelah halaman terbuka
+      }
+    }
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+
+<div class="navbar">
+    <div class="iniNav">
+        <div class="iniWarnaNav">
+            <div class="atas">
+                <div class="garis"></div>
+            </div>
+            <div class="bawah">
+                <a href="/" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="24" height="24">
+                        <path d="M 0 0 H 192 L 0 192 H 192 Z" fill="currentColor"/>
+                    </svg>
+                </a>
+                <div class="navMenu">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const navMenu = document.querySelector(".iniWarnaNav .navMenu")
+    navMenu.addEventListener("click", function(){
+        navMenu.parentElement.parentElement.parentElement.parentElement.classList.toggle("kepencet");
+    })
+</script>
+

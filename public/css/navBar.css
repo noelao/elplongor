@@ -1,0 +1,100 @@
+
+.navbar {
+    position: sticky;
+    top: .5rem;
+
+    width: 100%;
+    padding: 0 1.5rem;
+
+    
+    z-index: 10;
+    height: auto;
+    transition: padding .3s ease;
+    .iniNav {
+        width: 100%;
+        border-radius: 1.7rem;
+        overflow: hidden;
+        
+        .iniWarnaNav {
+            width: 100%;
+
+            --tw-backdrop-blur: blur(24px);
+            backdrop-filter: var(--tw-backdrop-blur);
+
+            background-color: hsl(0 0% 93% / 72%);
+
+            .atas {
+                height: 0;
+                width: 100%;
+                transition: height .3s ease;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                position: relative;
+                .garis {
+                    background-color: #ababab;
+                    opacity: .6;
+                    width: 90%;
+                    position: absolute;
+                    bottom: 0;
+                    height: 2px;
+                }
+            }
+            .bawah {
+                height: 3.4rem;
+                width: 100%;
+
+                display: flex;
+                justify-content: space-between;
+                padding: .7rem 1.5rem;
+                .logo {
+                    height: 100%;
+                    aspect-ratio: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    svg {
+                        height: 70%;
+                    }
+                }
+                .navMenu {
+                    padding: .5rem;
+                    height: 100%;
+                    aspect-ratio: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    span {
+                        width: 100%;
+                        height: 3px;
+                        background-color: #000;
+                        transition: transform .3s ease;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.kepencet {
+    padding: 0 .5rem;
+    .iniNav {
+        .iniWarnaNav {
+            .atas {
+                height: 5.5rem;
+            }
+            .bawah {
+                .navMenu {
+                    span:nth-child(1) {
+                        transform: rotate(30deg);
+                    }
+                    span:nth-child(2) {
+                        transform: rotate(30deg);
+                    }
+                }
+            }
+        }
+    }
+}

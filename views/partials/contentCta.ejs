@@ -1,0 +1,348 @@
+
+
+
+<div class="content">
+    <div class="selamatDatang">
+        <h1 style="width: 50%; line-height: 1; margin-bottom: .5rem;" class="muncul">Dear Warrior</h1>
+        <div class="subTitle">
+            <div class="tips">
+                TIPS
+            </div>
+            <p class="typewriter">
+                <span id="efek-ngetik" class="teks-ngetik"></span><span class="kursor">|</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="elplongor">
+        <div class="kiri">
+            <img src="https://yt3.googleusercontent.com/kVU3nSXPI4GtP3y4PNjIyiTTiXXnayz3hlrWbh5JQdtfYrr3AvliDZvqsZVKEV4tF7ePNwrX=s160-c-k-c0x00ffffff-no-rj" alt="">
+            <div class="keterangan">
+                <h2>noelao</h2>
+                <small style="opacity: .8;">@elplongor</small>
+            </div>
+        </div>
+        <div class="kanan">
+            <img src="./public/image/pp/elplongor.png" alt="">
+        </div>
+    </div>
+    
+    <div class="garis"></div>
+
+
+    <section class="menu" id="base">
+        <a href="base.html?target=#base" class="base tombol menuan active">
+            <h2>Base</h2>
+            <div class="garisBawah"></div>
+        </a>
+        <a href="pasukan.html?target=#base" class="base tombol menuan">
+            <h2>Pasukan</h2>
+            <div class="garisBawah"></div>
+        </a>
+    </section>
+
+    <div class="opsi">
+        <div class="memilihTH">
+            <div class="gambarTh">
+                <img src="./public/image/thHd/th11.webp" alt="">
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--putih)" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+            </div>
+        </div>
+        <div class="memilihKategori">
+            <div class="tulisan">
+                <h1 class="h1">Base Trolls 😂</h1>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--putih)" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="pilihanOpsi">
+        <div class="kiri geser">
+            <img src="./public/image/icon/chevron-left.svg" alt="">
+        </div>
+        <div class="tengah">
+            <div class="kumpulan" id="autoScrollBox">
+                <img src="./public/image/th/gambar_hd_1.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_2.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_3.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_4.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_5.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_6.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_7.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_8.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_9.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_10.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_11.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_12.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_13.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_14.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_15.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_16.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_17.jpg" alt="">
+                <img src="./public/image/th/gambar_hd_18.jpg" alt="">
+            </div>
+
+            <script>
+                window.addEventListener('load', function() {
+                    const scrollBox = document.getElementById('autoScrollBox');
+                    const maxScrollWidth = scrollBox.scrollWidth - scrollBox.clientWidth;
+                    
+                    // Sekarang coba kita scroll, ukuran aslinya pasti sudah terbaca
+                    scrollBox.scrollTo({ left: maxScrollWidth*10/18, behavior: 'instant' });
+                    
+                    // (Opsional) Cek lagi batas maksimalnya di sini, seharusnya sudah ribuan pixel
+                    console.log("Batas maksimal setelah load: " + (scrollBox.scrollWidth - scrollBox.clientWidth));
+                });
+            </script>
+
+        </div>
+        <div class="kanan geser">
+            <img src="./public/image/icon/chevron-right.svg" alt="">
+        </div>
+    </div>
+
+    <br>
+
+    <div class="garis"></div>
+
+    <div class="tampilkanHasil">
+        <h2>Hasil base Untuk TH 18 :</h2>
+        <div class="filter">
+            <div class="tengah">
+                <div class="terpilihBg"></div>
+                <div class="pilihan tombol terbaik terpilih">
+                    <h2>terbaik</h2>
+                </div>
+                <div class="pilihan tombol terbaru">
+                    <h2>terbaru</h2>
+                </div>
+                <div class="pilihan tombol terlama">
+                    <h2>terlama</h2>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const pilihanFilter = document.querySelectorAll(".filter .tengah .pilihan");
+            const terpilihBg= document.querySelector(".filter .tengah .terpilihBg");
+
+            pilihanFilter.forEach((ini, i) => {
+                ini.addEventListener("click", function(){
+                    pilihanFilter.forEach((ini) => {
+                        ini.classList.remove("terpilih");
+                    });
+
+                    ini.classList.add("terpilih");
+
+                    const lebarParent = terpilihBg.parentElement.clientWidth;
+                    const lebarClient = ini.clientWidth;
+                    console.log(lebarClient);
+
+                    const iInt = parseInt(i);
+                    
+                    terpilihBg.style.left = `calc(.2rem + (${lebarParent}px - .4rem) * ${i/3})`;
+                    terpilihBg.style.width = `calc(${lebarClient}px + 1.4rem)`;
+
+                });
+            });
+        </script>
+
+<style>
+    .wrapper {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        .tiga {
+            padding: 2rem 1rem;
+            width: calc(100% + 2rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background-color: var(--silver);
+
+        }
+        .card {
+            width: 100%;
+            height: 12rem;
+            background-color: var(--silver);
+            .card-content {
+                width: 100%;
+            }
+
+            .skeleton {
+                background: linear-gradient(100deg, var(--silver) 8%, #f9f9f9 18%, var(--silver) 33%);
+                
+                background-size: 200% 100%;
+                
+                animation: 6s shimmer linear infinite;
+            }
+            .card-content {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                border-radius: .75rem;
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        .selingan {
+            height: 2rem;
+        }
+        .quote {
+            height: max-content;
+            padding: 1rem;
+            text-align: center;
+        }
+        .nextData {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .panah {
+                height: 4rem;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: var(--silver);
+                border-radius: .75rem;
+                cursor: pointer;
+
+                svg {
+                    height: 2rem;
+                }
+            }
+            .panah:active {
+                scale: .9;
+            }
+        }
+    }
+    @keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+    }
+</style>
+        <div class="wrapper">
+            <div class="tiga">
+                <div class="card skeleton">
+                    <div class="card-content skeleton">
+                        <img src="./public/image/base/th17/base.webp" alt="">
+                    </div>
+                </div>
+                <a href="#" class="card">
+                    <div class="card-content">
+                        <img src="./public/image/base/th17/base.webp" alt="">
+                    </div>
+                </a>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./public/image/base/th17/base.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="selingan quote">
+                <h2>" Musuhnya musuh adalah teman "</h2>
+                <small>SUN TZU</small>
+            </div>
+            <div class="selingan card"></div>
+
+            
+            <div class="tiga">
+                <div class="card skeleton">
+                    <div class="card-content skeleton">
+                        <img src="./public/image/base/th17/base.webp" alt="">
+                    </div>
+                </div>
+                <a href="#" class="card">
+                    <div class="card-content">
+                        <img src="./public/image/base/th17/base.webp" alt="">
+                    </div>
+                </a>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./public/image/base/th17/base.webp" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="nextData">
+                <div class="panah tombol">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--hitam)" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- menu kategori yg muncul dari bawah -->
+    <div class="pilihanOpsiKategori">
+        <div class="background"></div>
+        <div class="pilihanKategori2">
+            <div class="garis"></div>
+            <div class="choice">
+                <h1>Base Trolls</h1>
+                <h1>Clan War Leaguage</h1>
+                <h1>War Base</h1>
+                <h1>Center big Space</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const pilihTh = document.querySelector('.memilihTH');
+    const pilihanOpsi = document.querySelector('.pilihanOpsi');
+
+    const memilihKategori = document.querySelector('.memilihKategori');
+    const pilihanOpsiKategori = document.querySelector('.pilihanOpsiKategori');
+
+    pilihTh.addEventListener("click", function(){
+        console.log("pencet");
+        pilihTh.classList.toggle('sedangMemilih');
+        pilihanOpsi.classList.toggle('actived');
+    });
+
+    memilihKategori.addEventListener("click", function(){
+        console.log("pencet");
+        memilihKategori.classList.toggle('sedangMemilih');
+        pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
+    });
+    pilihanOpsiKategori.querySelector(".background").addEventListener("click", function(){
+        memilihKategori.classList.toggle('sedangMemilih');
+        pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
+    });
+        
+
+
+</script>
+
+<!-- mengetik -->
+<script src="/js/mengetik.js"></script>

@@ -1,0 +1,788 @@
+
+<!-- content -->
+    <style>
+.content {
+    .opsi {
+        padding: 1rem;
+        width: 100%;
+
+        display: flex;
+        gap: 1rem;
+        .memilihTH {
+            flex: 3;
+            aspect-ratio: 1;
+            background: var(--hitam);
+            border-radius: 1.5rem;
+            transition: background-color .3s ease;
+            .gambarTh {
+                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3);
+                height: 100%;
+                width: 100%;
+                background-color: var(--silver);
+                border-radius: 1.5rem;
+                padding: 1rem;
+                transition: background-color .3s ease, box-shadow .3s ease;
+                img {
+                    width: 100%;
+                }
+            }
+            .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: .5rem 0;
+                svg {
+                    width: 2rem;
+                    opacity: .8;
+                    transition: stroke .3s ease;
+                }
+            }
+        }
+        
+        .memilihKategori {
+            width: 100%;
+            flex: 3;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            background-color: var(--hitam);
+            border-radius: 1.5rem;
+            transition: background-color .3s ease;
+            .tulisan {
+                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3);
+
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: var(--silver);
+                border-radius: 1.5rem;
+                padding: 1rem;
+                transition: background-color .3s ease, box-shadow .3s ease;
+                .h1 {
+                    font-size: 2.1rem;              
+                    line-height: 1.1;
+                }
+            }
+            .icon {
+
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: .5rem 0;
+                svg {
+                    width: 2rem;
+                    opacity: .8;
+                    transition: stroke .3s ease;
+                }
+            }
+        }
+        .sedangMemilih {
+            background-color: var(--silver);
+            .gambarTh {
+                background-color: var(--hitam);
+                box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+            }
+            .tulisan {
+                color: var(--putih);
+                background-color: var(--hitam);
+                box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+            }
+            .icon {
+                svg {
+                    stroke:var(--hitam);
+                }
+            }
+        }
+    }
+
+    .actived {
+        height: 8rem !important;
+    }
+    .pilihanOpsi {
+        width: 100%;
+        height: 0;
+        background-color: var(--hitam);
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        transition: height .3s ease;
+        .tengah {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            
+            grid-template-rows: 1fr;
+            .kumpulan {
+                width: 100%;
+                max-width: 100vw;
+                height: 8rem;
+
+                overflow-x: scroll;
+                width: max-content;
+
+                display: flex;
+
+                gap: 2rem;
+                padding: 1rem;
+                img {
+                    height: 100%;
+                    width: auto;
+                }
+            }
+            .kumpulan::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        .geser {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            opacity: .8;
+
+            position: absolute;
+            img {
+                width: 2rem;
+            }
+        }
+        .kanan {
+            right: 0;
+        }
+    }
+    .pilihanOpsiKategori {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        transform: translateY(100%);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        /* 1 angka lebih dari header nav */
+        z-index: 11;
+        .background {
+            width: 100%;
+            height: 100%;
+            background-color: var(--hitam);
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+        .pilihanKategori2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 2rem 2rem 0 0;
+            height: 60vh;
+            width: 100%;
+            background-color: var(--putih);
+            transform: translateY(100%);
+            transition: transform .3s ease;
+
+            .choice {
+                margin-top: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: .3rem;
+            }
+        }
+    }
+    .pilihanOpsiKategoriMuncul {
+        transform: translateY(0);
+        .background {
+            opacity: .7;
+        }
+        .pilihanKategori2 {
+            transform: translateY(0);
+            padding: 1rem;
+        }
+    }
+    .garis {
+        width: 100%;
+        height: 2px;
+        background-color: var(--silver);
+    }
+
+    .tampilkanHasil {
+        width: 100%;
+        height: 100%;
+        padding: 2rem 1rem;
+
+        .filter {
+            margin: 3rem 0 0 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            .tengah {
+                padding: 1rem 1rem;
+
+                background-color: var(--silver);
+                border-radius: 5rem;
+                display: flex;
+                align-items: center;
+                gap: 1.6rem;
+
+                height: 2.8rem;
+                position: relative;
+                
+
+                .terpilihBg {
+                    height: calc(100% - .5rem);
+                    width: calc(56px + 1.4rem);
+
+                    border-radius: 3rem;
+                    background-color: #fff;
+                    position: absolute;
+                    left: .2rem;
+                    transition: left .3s ease, width .1s ease;
+                    
+                    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.092);
+                }
+                .pilihan {
+                    position: relative;
+                    opacity: .5;
+                    transition: opacity .3s ease;
+                    cursor: pointer;
+                    h2 {
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                    }
+                }
+                .terpilih {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+    </style>
+
+
+<style>
+    .selamatDatang {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        margin: 3rem 0 0 0;
+        font-size: 1.2rem;
+        .subTitle {
+            width: 100%;
+            background-color: var(--silver);
+            padding: .5rem .8rem;
+            border-radius: 0.55rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            .tips {
+                padding: .2rem .8rem;
+                border-radius: 0.75rem;
+                background-color: var(--hitam);
+                color: var(--putih);
+                font-size: .9rem;
+                font-weight: 500;
+            }
+            p {
+                font-size: .9rem;
+                font-weight: 500;
+            }
+        }
+    }
+    .elplongor {
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        .kiri {
+            display: flex;
+            gap: .5rem;
+            img {
+                border-radius: .75rem;
+                height: 3rem;
+            }
+            .keterangan {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .kanan {
+            padding: .2rem 0;
+            height: 3rem;
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    #base {
+        scroll-behavior: smooth;
+        scroll-margin-top: 5rem;
+    }
+    .menu {
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        gap: 1rem;
+
+
+        .menuan {
+            h2 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                padding: .2rem 0;
+                opacity: .3;
+            }
+            .garisBawah {
+                width: 100%;
+                height: 2px;
+                background-color: var(--hitam);
+                opacity: 0;
+            }
+        }
+        .active {
+            h2 {
+                opacity: 1;
+            }
+            .garisBawah {
+                opacity: 1;
+            }
+        }
+    }
+</style>
+
+<!-- tampilan mengetik -->
+<style>
+
+/* Membuat animasi kursor berkedip */
+.kursor {
+    display: inline-block;
+    color: #333;
+    animation: kedip 0.7s infinite;
+}
+
+@keyframes kedip {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+</style>
+
+<!-- kerangka htmlnya -->
+<div class="content">
+
+    <div class="selamatDatang">
+        <h1 style="width: 50%; line-height: 1; margin-bottom: .5rem;" class="muncul">Dear Warrior</h1>
+        <div class="subTitle">
+            <div class="tips">
+                TIPS
+            </div>
+            <p class="typewriter">
+                <span id="efek-ngetik" class="teks-ngetik"></span><span class="kursor">|</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="elplongor">
+        <div class="kiri">
+            <img src="https://yt3.googleusercontent.com/kVU3nSXPI4GtP3y4PNjIyiTTiXXnayz3hlrWbh5JQdtfYrr3AvliDZvqsZVKEV4tF7ePNwrX=s160-c-k-c0x00ffffff-no-rj" alt="">
+            <div class="keterangan">
+                <h2>noelao</h2>
+                <small style="opacity: .8;">@elplongor</small>
+            </div>
+        </div>
+        <div class="kanan">
+            <img src="/image/pp/elplongor.png" alt="">
+        </div>
+    </div>
+    
+    <div class="garis"></div>
+
+
+    <section class="menu" id="base">
+        <a href="base?target=#base" class="base tombol menuan active">
+            <h2>Base</h2>
+            <div class="garisBawah"></div>
+        </a>
+        <a href="pasukan?target=#base" class="base tombol menuan">
+            <h2>Pasukan</h2>
+            <div class="garisBawah"></div>
+        </a>
+    </section>
+
+    <div class="opsi">
+        <div class="memilihTH">
+            <div class="gambarTh">
+                <img src="/image/thHd/th11.webp" alt="">
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--putih)" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+            </div>
+        </div>
+        <div class="memilihKategori">
+            <div class="tulisan">
+                <h1 class="h1">Base Trolls 😂</h1>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--putih)" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="pilihanOpsi">
+        <div class="kiri geser">
+            <img src="/image/icon/chevron-left.svg" alt="">
+        </div>
+        <div class="tengah">
+            <div class="kumpulan" id="autoScrollBox">
+                <img src="/image/th/gambar_hd_1.jpg" alt="">
+                <img src="/image/th/gambar_hd_2.jpg" alt="">
+                <img src="/image/th/gambar_hd_3.jpg" alt="">
+                <img src="/image/th/gambar_hd_4.jpg" alt="">
+                <img src="/image/th/gambar_hd_5.jpg" alt="">
+                <img src="/image/th/gambar_hd_6.jpg" alt="">
+                <img src="/image/th/gambar_hd_7.jpg" alt="">
+                <img src="/image/th/gambar_hd_8.jpg" alt="">
+                <img src="/image/th/gambar_hd_9.jpg" alt="">
+                <img src="/image/th/gambar_hd_10.jpg" alt="">
+                <img src="/image/th/gambar_hd_11.jpg" alt="">
+                <img src="/image/th/gambar_hd_12.jpg" alt="">
+                <img src="/image/th/gambar_hd_13.jpg" alt="">
+                <img src="/image/th/gambar_hd_14.jpg" alt="">
+                <img src="/image/th/gambar_hd_15.jpg" alt="">
+                <img src="/image/th/gambar_hd_16.jpg" alt="">
+                <img src="/image/th/gambar_hd_17.jpg" alt="">
+                <img src="/image/th/gambar_hd_18.jpg" alt="">
+            </div>
+
+            <script>
+                window.addEventListener('load', function() {
+                    const scrollBox = document.getElementById('autoScrollBox');
+                    const maxScrollWidth = scrollBox.scrollWidth - scrollBox.clientWidth;
+                    
+                    // Sekarang coba kita scroll, ukuran aslinya pasti sudah terbaca
+                    scrollBox.scrollTo({ left: maxScrollWidth*10/18, behavior: 'instant' });
+                    
+                    // (Opsional) Cek lagi batas maksimalnya di sini, seharusnya sudah ribuan pixel
+                    console.log("Batas maksimal setelah load: " + (scrollBox.scrollWidth - scrollBox.clientWidth));
+                });
+            </script>
+
+        </div>
+        <div class="kanan geser">
+            <img src="/image/icon/chevron-right.svg" alt="">
+        </div>
+    </div>
+    <br>
+    <div class="garis"></div>
+
+    <div class="tampilkanHasil">
+        <h2>Hasil base Untuk TH 18 :</h2>
+        <div class="filter">
+            <div class="tengah">
+                <div class="terpilihBg"></div>
+                <div class="pilihan tombol terbaik terpilih">
+                    <h2>terbaik</h2>
+                </div>
+                <div class="pilihan tombol terbaru">
+                    <h2>terbaru</h2>
+                </div>
+                <div class="pilihan tombol terlama">
+                    <h2>terlama</h2>
+                </div>
+            </div>
+        </div>
+        <script>
+            const pilihanFilter = document.querySelectorAll(".filter .tengah .pilihan");
+            const terpilihBg= document.querySelector(".filter .tengah .terpilihBg");
+
+            pilihanFilter.forEach((ini, i) => {
+                ini.addEventListener("click", function(){
+                    pilihanFilter.forEach((ini) => {
+                        ini.classList.remove("terpilih");
+                    });
+
+                    ini.classList.add("terpilih");
+
+                    const lebarParent = terpilihBg.parentElement.clientWidth;
+                    const lebarClient = ini.clientWidth;
+                    console.log(lebarClient);
+
+                    const iInt = parseInt(i);
+                    
+                    terpilihBg.style.left = `calc(.2rem + (${lebarParent}px - .4rem) * ${i/3})`;
+                    terpilihBg.style.width = `calc(${lebarClient}px + 1.4rem)`;
+
+                });
+            });
+        </script>
+
+<style>
+    .wrapper {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        .tiga {
+            padding: 2rem 1rem;
+            width: calc(100% + 2rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background-color: var(--silver);
+
+        }
+        .card {
+            width: 100%;
+            height: 12rem;
+            background-color: var(--silver);
+            .card-content {
+                width: 100%;
+            }
+
+            .skeleton {
+                background: linear-gradient(100deg, var(--putih) 8%, var(--silver) 18%, var(--putih) 33%);
+                
+                background-size: 200% 100%;
+                
+                animation: 6s shimmer linear infinite;
+            }
+            .card-content {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                border-radius: .75rem;
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        .selingan {
+            height: 2rem;
+        }
+        .quote {
+            height: max-content;
+            padding: 1rem;
+            text-align: center;
+        }
+        .nextData {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .panah {
+                height: 4rem;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: var(--silver);
+                border-radius: .75rem;
+                cursor: pointer;
+
+                svg {
+                    height: 2rem;
+                }
+            }
+            .panah:active {
+                scale: .9;
+            }
+        }
+    }
+    @keyframes shimmer {
+    0% {
+        background-position: 300% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+    }
+</style>
+        <div class="wrapper">
+
+            <div class="tiga">
+                <div class="card skeleton">
+                    <div class="card-content skeleton">
+                    </div>
+                </div>
+                <div class="card skeleton">
+                    <div class="card-content skeleton">
+                    </div>
+                </div>
+                <div class="card skeleton">
+                    <div class="card-content skeleton">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- menu kategori yg muncul dari bawah -->
+    <div class="pilihanOpsiKategori">
+        <div class="background"></div>
+        <div class="pilihanKategori2">
+            <div class="garis"></div>
+            <div class="choice">
+                <h1>Base Trolls</h1>
+                <h1>Clan War Leaguage</h1>
+                <h1>War Base</h1>
+                <h1>Center big Space</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- tampilan mengetik -->
+<script src="/js/mengetik.js"></script>
+
+<!-- tombolan inside content -->
+<script>
+    const pilihTh = document.querySelector('.memilihTH');
+    const pilihanOpsi = document.querySelector('.pilihanOpsi');
+
+    const memilihKategori = document.querySelector('.memilihKategori');
+    const pilihanOpsiKategori = document.querySelector('.pilihanOpsiKategori');
+
+    pilihTh.addEventListener("click", function(){
+        console.log("pencet");
+        pilihTh.classList.toggle('sedangMemilih');
+        pilihanOpsi.classList.toggle('actived');
+    });
+
+    memilihKategori.addEventListener("click", function(){
+        console.log("pencet");
+        memilihKategori.classList.toggle('sedangMemilih');
+        pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
+    });
+    pilihanOpsiKategori.querySelector(".background").addEventListener("click", function(){
+        memilihKategori.classList.toggle('sedangMemilih');
+        pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
+    });
+        
+
+
+</script>
+
+
+<!-- load data api -->
+<script>
+    const dataPilihanKategori = [
+        "warBase", "spaceBase", "baseTrolls"
+    ]
+    const dataPilihanTh = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+
+    let memilihTOWNHALL = 11;
+    let memilihKATEGORI = "baseTrolls";
+
+
+
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    ambilData(memilihTOWNHALL, memilihKATEGORI);
+
+
+
+    async function ambilData(townhall, kategori){
+        let dataTh = [];
+        try {
+            await delay(2000);
+            const data = await fetch("/api/base/"+townhall+"/"+kategori);
+            if(!data.ok){
+                throw new Error("Gagal mengambil data");
+            }
+            dataTh = await data.json();
+            console.log(dataTh);
+        } catch(err) {
+            console.log(err);
+        } finally {
+            const wrapper = document.querySelector(".wrapper");
+            wrapper.innerHTML = "";
+
+            // partials
+            const selingan = `
+            <div class="selingan quote">
+                <h2>" Musuhnya musuh adalah teman "</h2>
+                <small>SUN TZU</small>
+            </div>
+            <div class="selingan card"></div>
+            `
+            const nextData = `
+            <div class="nextData">
+                <div class="panah tombol">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--hitam)" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
+                    </svg>
+                </div>
+            </div>`
+
+
+            let tiga = "";
+            for(i in dataTh.data){
+                const id = dataTh.data[i].id
+                const card = `
+                <a href="/aplikasi/base/${kategori}/${id}" class="card">
+                    <div class="card-content">
+                        <img src="/image/base/th17/base.webp" alt="">
+                    </div>
+                </a>
+                `
+                tiga += card;
+                const iInt = parseInt(i);
+
+                console.log((iInt+1) % 3)
+                if((iInt+1) % 3 == 0){
+                    console.log("menambahkan tiga ketika sudah ke tiga")
+                    wrapper.innerHTML += `
+                    <div class="tiga">
+                        ${tiga}
+                        </div>
+                    `;
+
+                    tiga = "";
+                    
+                    if(dataTh.data.length - iInt <= 3){
+                        wrapper.innerHTML += selingan;
+                    }
+                }
+            }
+
+            console.log("menambahkan tiga")
+            wrapper.innerHTML += `
+            <div class="tiga">
+                ${tiga}
+            </div>
+            `;
+
+            wrapper.innerHTML += nextData;
+        }
+
+    }
+</script>
