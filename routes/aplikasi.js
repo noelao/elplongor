@@ -16,9 +16,18 @@ aplikasi.get('/base/:kategori/:id', (req, res) => {
   res.render('aplikasi/baseTerpilih');
 });
 
+
+
 aplikasi.get('/pasukan', (req, res) => {
   res.render('aplikasi/pasukan');
 });
+
+
+
+
+aplikasi.get('/spin', (req, res) => {
+  res.render('aplikasi/spin');
+})
 
 
 module.exports = aplikasi;

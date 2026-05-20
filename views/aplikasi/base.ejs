@@ -556,6 +556,7 @@
                 animation: 2s shimmer linear infinite;
             }
             .card-content {
+                background-size: 200% 100%;
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
@@ -563,10 +564,28 @@
                 align-items: center;
                 justify-content: center;
 
+                position: relative;    
+
                 border-radius: .75rem;
+                .embel {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    color: var(--putih);
+
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+
+                    z-index: 1;
+                }
                 img {
+                    position: absolute;
                     width: 100%;
                     object-fit: cover;
+                    z-index: 0;
                 }
             }
         }
@@ -626,10 +645,9 @@
         <div class="pilihanKategori2">
             <div class="garis"></div>
             <div class="choice">
-                <h1>Base Trolls</h1>
-                <h1>Clan War Leaguage</h1>
                 <h1>War Base</h1>
-                <h1>Center big Space</h1>
+                <h1>Space Base</h1>
+                <h1>Troll Base</h1>
             </div>
         </div>
     </div>
@@ -669,6 +687,11 @@
     const dataPilihanKategori = [
         "warBase", "spaceBase", "baseTrolls"
     ]
+    const dataPilihanKategori2 = [
+        "War Base 👺", "Space Base 🦀", "Base Trolls 😂"
+    ]
+
+
     const dataPilihanTh = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
 
     let memilihTOWNHALL = 11;
@@ -703,7 +726,8 @@
                         </div>
             `;
 
-            const data = await fetch("/api/base/"+townhall+"/"+kategori);
+            console.log(urutkan);
+            const data = await fetch("/api/base/"+townhall+"/"+kategori+"/"+urutkan);
             if(!data.ok){
                 throw new Error("Gagal mengambil data");
             }
@@ -725,19 +749,26 @@
             const nextData = `
             <div class="nextData">
                 <div class="panah tombol">
+                    
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--hitam)" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
                     </svg>
                 </div>
             </div>`
 
-
             let tiga = "";
             for(i in dataTh.data){
                 const id = dataTh.data[i].id
+                const dataaa = dataTh.data[i]
                 const card = `
                 <a href="/aplikasi/base/${kategori}/${id}" class="card">
                     <div class="card-content">
+                        <div class="embel">
+                            <h1>${dataaa.id}
+                            </h1>
+                            <h1>${dataaa.rating}
+                            </h1>
+                        </div>
                         <img src="/image/base/th17/base.webp" alt="">
                     </div>
                 </a>
@@ -749,7 +780,7 @@
                     wrapper.innerHTML += `
                     <div class="tiga">
                         ${tiga}
-                        </div>
+                    </div>
                     `;
 
                     tiga = "";
@@ -771,6 +802,11 @@
 
     }
 
+</script>
+
+
+<!-- urusan tombol -->
+<script>
 
     // pilihan th scroll
     window.addEventListener('load', function() {
@@ -795,13 +831,17 @@
             ambilData(memilihTOWNHALL, memilihKATEGORI);
         });
     })
+
     // pilihan kategori
     const pilihanKategori = document.querySelectorAll(".pilihanKategori2 .choice h1");
+    const gantiTulisan = document.querySelector(".memilihKategori .tulisan h1")
     pilihanKategori.forEach((ini, i) => {
         ini.addEventListener("click", function(){
             memilihKATEGORI = dataPilihanKategori[i];
             memilihKategori.classList.toggle('sedangMemilih');
             pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
+
+            gantiTulisan.innerHTML = dataPilihanKategori2[i];
 
             ambilData(memilihTOWNHALL, memilihKATEGORI);
         });

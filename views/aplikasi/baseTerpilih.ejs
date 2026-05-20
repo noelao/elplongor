@@ -1,0 +1,35 @@
+<style>
+.content {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    .rotateImage {
+        width: 100%;
+        aspect-ratio: 9/16;
+
+        container-type: size;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        img {
+            rotate: 90deg;
+            height: 100cqw;
+            width: 100cqh;
+            object-fit: cover;
+        }
+    }
+}
+</style>
+
+<div class="content">
+    <div class="rotateImage">
+        <img src="/image/base/th17/base.webp" alt="">
+    </div>
+</div>
