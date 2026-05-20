@@ -13,7 +13,7 @@ api.get('/', (req, res) => {
 api.get('/base/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const filePath = path.join(__dirname,'..', 'data', 'th', `th${id}.json`);
+        const filePath = path.join(__dirname,'..', 'data', 'base', `th${id}.json`);
         
         const rawData = await fs.readFile(filePath, 'utf-8');
         
@@ -30,7 +30,7 @@ api.get('/base/:id/:kategori', async (req, res) => {
         const id = req.params.id;
         const kategori = req.params.kategori;
 
-        const filePath = path.join(__dirname,'..', 'data', 'th', `th${id}.json`);
+        const filePath = path.join(__dirname,'..', 'data', 'base', `th${id}.json`);
         
         const rawData = await fs.readFile(filePath, 'utf-8');
         

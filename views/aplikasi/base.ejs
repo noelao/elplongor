@@ -134,7 +134,7 @@
                 display: flex;
 
                 gap: 2rem;
-                padding: 1rem;
+                padding: 1.3rem;
                 img {
                     height: 100%;
                     width: auto;
@@ -442,6 +442,7 @@
         </div>
     </div>
 
+
     <div class="pilihanOpsi">
         <div class="kiri geser">
             <img src="/image/icon/chevron-left.svg" alt="">
@@ -468,24 +469,12 @@
                 <img src="/image/th/gambar_hd_18.jpg" alt="">
             </div>
 
-            <script>
-                window.addEventListener('load', function() {
-                    const scrollBox = document.getElementById('autoScrollBox');
-                    const maxScrollWidth = scrollBox.scrollWidth - scrollBox.clientWidth;
-                    
-                    // Sekarang coba kita scroll, ukuran aslinya pasti sudah terbaca
-                    scrollBox.scrollTo({ left: maxScrollWidth*10/18, behavior: 'instant' });
-                    
-                    // (Opsional) Cek lagi batas maksimalnya di sini, seharusnya sudah ribuan pixel
-                    console.log("Batas maksimal setelah load: " + (scrollBox.scrollWidth - scrollBox.clientWidth));
-                });
-            </script>
-
         </div>
         <div class="kanan geser">
             <img src="/image/icon/chevron-right.svg" alt="">
         </div>
     </div>
+
     <br>
     <div class="garis"></div>
 
@@ -506,6 +495,7 @@
             </div>
         </div>
         <script>
+
             const pilihanFilter = document.querySelectorAll(".filter .tengah .pilihan");
             const terpilihBg= document.querySelector(".filter .tengah .terpilihBg");
 
@@ -519,13 +509,13 @@
 
                     const lebarParent = terpilihBg.parentElement.clientWidth;
                     const lebarClient = ini.clientWidth;
-                    console.log(lebarClient);
 
                     const iInt = parseInt(i);
                     
                     terpilihBg.style.left = `calc(.2rem + (${lebarParent}px - .4rem) * ${i/3})`;
                     terpilihBg.style.width = `calc(${lebarClient}px + 1.4rem)`;
 
+                    ambilData(memilihTOWNHALL, memilihKATEGORI, iInt);
                 });
             });
         </script>
@@ -563,7 +553,7 @@
                 
                 background-size: 200% 100%;
                 
-                animation: 6s shimmer linear infinite;
+                animation: 2s shimmer linear infinite;
             }
             .card-content {
                 width: 100%;
@@ -624,21 +614,7 @@
 </style>
         <div class="wrapper">
 
-            <div class="tiga">
-                <div class="card skeleton">
-                    <div class="card-content skeleton">
-                    </div>
-                </div>
-                <div class="card skeleton">
-                    <div class="card-content skeleton">
-                    </div>
-                </div>
-                <div class="card skeleton">
-                    <div class="card-content skeleton">
-                    </div>
-                </div>
-            </div>
-
+            <!-- disini -->
 
         </div>
     </div>
@@ -673,13 +649,11 @@
     const pilihanOpsiKategori = document.querySelector('.pilihanOpsiKategori');
 
     pilihTh.addEventListener("click", function(){
-        console.log("pencet");
         pilihTh.classList.toggle('sedangMemilih');
         pilihanOpsi.classList.toggle('actived');
     });
 
     memilihKategori.addEventListener("click", function(){
-        console.log("pencet");
         memilihKategori.classList.toggle('sedangMemilih');
         pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
     });
@@ -687,9 +661,6 @@
         memilihKategori.classList.toggle('sedangMemilih');
         pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
     });
-        
-
-
 </script>
 
 
@@ -710,22 +681,39 @@
 
 
 
-    async function ambilData(townhall, kategori){
+    async function ambilData(townhall, kategori, urutkan=0){
+        const wrapper = document.querySelector(".wrapper");
+        wrapper.innerHTML = "";
         let dataTh = [];
         try {
-            await delay(2000);
+            wrapper.innerHTML = `
+                        <div class="tiga">
+                            <div class="card skeleton">
+                                <div class="card-content skeleton">
+                                </div>
+                            </div>
+                            <div class="card skeleton">
+                                <div class="card-content skeleton">
+                                </div>
+                            </div>
+                            <div class="card skeleton">
+                                <div class="card-content skeleton">
+                                </div>
+                            </div>
+                        </div>
+            `;
+
             const data = await fetch("/api/base/"+townhall+"/"+kategori);
             if(!data.ok){
                 throw new Error("Gagal mengambil data");
             }
             dataTh = await data.json();
-            console.log(dataTh);
+            await delay(500);
+
         } catch(err) {
             console.log(err);
         } finally {
-            const wrapper = document.querySelector(".wrapper");
             wrapper.innerHTML = "";
-
             // partials
             const selingan = `
             <div class="selingan quote">
@@ -757,9 +745,7 @@
                 tiga += card;
                 const iInt = parseInt(i);
 
-                console.log((iInt+1) % 3)
                 if((iInt+1) % 3 == 0){
-                    console.log("menambahkan tiga ketika sudah ke tiga")
                     wrapper.innerHTML += `
                     <div class="tiga">
                         ${tiga}
@@ -774,7 +760,6 @@
                 }
             }
 
-            console.log("menambahkan tiga")
             wrapper.innerHTML += `
             <div class="tiga">
                 ${tiga}
@@ -785,4 +770,40 @@
         }
 
     }
+
+
+    // pilihan th scroll
+    window.addEventListener('load', function() {
+        const scrollBox = document.getElementById('autoScrollBox');
+        const maxScrollWidth = scrollBox.scrollWidth - scrollBox.clientWidth;
+        
+        scrollBox.scrollTo({ left: maxScrollWidth*memilihTOWNHALL/18, behavior: 'instant' });
+        
+        console.log("Batas maksimal setelah load: " + (scrollBox.scrollWidth - scrollBox.clientWidth));
+    });
+
+    const pilihanTh = document.querySelectorAll(".kumpulan img");
+    const tampilanThTerpilih = document.querySelector(".gambarTh img")
+    pilihanTh.forEach((ini, i) => {
+        ini.addEventListener("click", function(){
+            const iInt = parseInt(i);
+            memilihTOWNHALL = iInt + 1;
+            tampilanThTerpilih.src = `/image/thHd/th${iInt +1}.webp`;
+            pilihTh.classList.toggle('sedangMemilih');
+            pilihanOpsi.classList.toggle('actived');
+
+            ambilData(memilihTOWNHALL, memilihKATEGORI);
+        });
+    })
+    // pilihan kategori
+    const pilihanKategori = document.querySelectorAll(".pilihanKategori2 .choice h1");
+    pilihanKategori.forEach((ini, i) => {
+        ini.addEventListener("click", function(){
+            memilihKATEGORI = dataPilihanKategori[i];
+            memilihKategori.classList.toggle('sedangMemilih');
+            pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
+
+            ambilData(memilihTOWNHALL, memilihKATEGORI);
+        });
+    });
 </script>
