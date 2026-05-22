@@ -1,0 +1,95 @@
+[
+  {
+    "kategori": "baseTrolls",
+    "data": [
+      {
+        "id": 1,
+        "rating": 4,
+        "name": "base",
+        "th": 18,
+        "link": "https://link.clashofclans.com/id?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMfg5jzF_HOtuY2vVIqghJL",
+        "image": "/image/base/th18/pasukan1.jepg"
+      },
+      {
+        "id": 2,
+        "rating": 5,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      },
+      {
+        "id": 3,
+        "rating": 5,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      },
+      {
+        "id": 4,
+        "rating": 2,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      }
+    ]
+  },
+  {
+    "kategori": "warBase",
+    "data": [
+      {
+        "id": 1,
+        "rating": 5,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      },
+      {
+        "id": 1,
+        "rating": 4,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      },
+      {
+        "id": 1,
+        "rating": 5,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      },
+      {
+        "id": 1,
+        "rating": 3,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      }
+    ]
+  },
+  {
+    "kategori": "spaceBase",
+    "data": [
+      {
+        "id": 1,
+        "rating": 5,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      },
+      {
+        "id": 2,
+        "rating": 4,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      },
+      {
+        "id": 3,
+        "rating": 5,
+        "name": "base",
+        "th": 18,
+        "link": "ini.com"
+      }
+    ]
+  }
+]

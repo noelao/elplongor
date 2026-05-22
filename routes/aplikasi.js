@@ -26,7 +26,9 @@ aplikasi.get('/pasukan', (req, res) => {
 
 
 aplikasi.get('/spin', (req, res) => {
-  res.render('aplikasi/spin');
+  res.render('aplikasi/spin', {
+    layout: false
+  });
 })
 
 

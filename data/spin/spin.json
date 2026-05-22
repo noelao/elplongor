@@ -1,0 +1,193 @@
+{
+    "name": "pasukan",
+    "path": "image/pasukan/semua/",
+    "type": "folder",
+    "children": [
+        {
+            "name": "archer.webp",
+            "path": "image/pasukan/semua/archer.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "baby dragon.webp",
+            "path": "image/pasukan/semua/baby dragon.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "baloon.webp",
+            "path": "image/pasukan/semua/baloon.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "barbarian.webp",
+            "path": "image/pasukan/semua/barbarian.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "bowler.jpg",
+            "path": "image/pasukan/semua/bowler.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "dragon rider.webp",
+            "path": "image/pasukan/semua/dragon rider.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "dragon.webp",
+            "path": "image/pasukan/semua/dragon.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "druin bear.jpg",
+            "path": "image/pasukan/semua/druin bear.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "electro dragon.webp",
+            "path": "image/pasukan/semua/electro dragon.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "electro titan.webp",
+            "path": "image/pasukan/semua/electro titan.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "furnace.jpg",
+            "path": "image/pasukan/semua/furnace.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "giant.webp",
+            "path": "image/pasukan/semua/giant.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "goblin.webp",
+            "path": "image/pasukan/semua/goblin.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "golem.jpg",
+            "path": "image/pasukan/semua/golem.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "healer.webp",
+            "path": "image/pasukan/semua/healer.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "hog rider.jpg",
+            "path": "image/pasukan/semua/hog rider.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "hunter.jpg",
+            "path": "image/pasukan/semua/hunter.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "ice golem.jpg",
+            "path": "image/pasukan/semua/ice golem.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "lavaloon.jpg",
+            "path": "image/pasukan/semua/lavaloon.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "meteromite.webp",
+            "path": "image/pasukan/semua/meteromite.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "miner.webp",
+            "path": "image/pasukan/semua/miner.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "mini warder.jpg",
+            "path": "image/pasukan/semua/mini warder.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "minion.jpg",
+            "path": "image/pasukan/semua/minion.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "p.e.k.k.a.webp",
+            "path": "image/pasukan/semua/p.e.k.k.a.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "root rider.webp",
+            "path": "image/pasukan/semua/root rider.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "thrower.webp",
+            "path": "image/pasukan/semua/thrower.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "valkyre.jpg",
+            "path": "image/pasukan/semua/valkyre.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "wall breaker.webp",
+            "path": "image/pasukan/semua/wall breaker.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "which.jpg",
+            "path": "image/pasukan/semua/which.jpg",
+            "type": "file",
+            "extension": ".jpg"
+        },
+        {
+            "name": "wizard.webp",
+            "path": "image/pasukan/semua/wizard.webp",
+            "type": "file",
+            "extension": ".webp"
+        },
+        {
+            "name": "yetti.webp",
+            "path": "image/pasukan/semua/yetti.webp",
+            "type": "file",
+            "extension": ".webp"
+        }
+    ]
+}
