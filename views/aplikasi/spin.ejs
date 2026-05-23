@@ -11,9 +11,7 @@
     :root {
       --bg: #0d0e14;
       --surface: #181922;
-      --surface2: #21222e;
       --border: rgba(255,255,255,0.08);
-      --text: #f0f0f5;
       --muted: #8b8d9e;
       --accent: #f0c040;
       --win: #22c55e;
@@ -22,7 +20,7 @@
 
     body {
       background: var(--bg);
-      color: var(--text);
+      color: #f0f0f5;
       font-family: 'DM Sans', sans-serif;
       min-height: 100vh;
       display: flex;
@@ -42,38 +40,66 @@
     }
     .header p { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
+    /* loading */
+    #loading-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .loading-bar {
+      width: 200px; height: 3px;
+      background: #21222e;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .loading-bar-inner {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 4px;
+      animation: loadBar 1.2s ease-in-out infinite;
+    }
+    @keyframes loadBar {
+      0%   { width: 0%;  margin-left: 0; }
+      50%  { width: 60%; margin-left: 20%; }
+      100% { width: 0%;  margin-left: 100%; }
+    }
+    .loading-text { font-size: 13px; color: var(--muted); }
+
+    /* error */
+    #error-wrap { display: none; }
+    .error-box {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      font-size: 13px;
+      color: #f87171;
+      text-align: center;
+    }
+
+    /* main */
+    #main-wrap { display: none; flex-direction: column; align-items: center; }
+
     .reels { display: flex; gap: 16px; margin-bottom: 2rem; }
 
     .reel-frame {
-      width: 140px;
-      height: 140px;
+      width: 140px; height: 140px;
       border-radius: 16px;
       border: 1.5px solid var(--border);
       background: var(--surface);
       overflow: hidden;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-
     .reel-frame.locked {
       border-color: #22c55e;
       box-shadow: 0 0 0 3px var(--locked-glow);
     }
-
     .reel-frame img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       border-radius: 14px;
     }
-
     .reel-frame.spinning img {
       filter: blur(1.5px) brightness(0.8);
     }
-
     .lock-badge {
       position: absolute;
       top: 8px; right: 8px;
@@ -83,34 +109,23 @@
       font-size: 11px;
       display: flex; align-items: center; justify-content: center;
       color: #fff;
-      opacity: 0;
-      transform: scale(0.7);
+      opacity: 0; transform: scale(0.7);
       transition: opacity 0.25s, transform 0.25s;
       z-index: 2;
     }
-
     .reel-frame.locked .lock-badge { opacity: 1; transform: scale(1); }
-
     .reel-name {
       position: absolute;
       bottom: 0; left: 0; right: 0;
       background: linear-gradient(transparent, rgba(0,0,0,0.75));
       padding: 18px 6px 7px;
       text-align: center;
-      font-size: 11px;
-      font-weight: 500;
-      color: #fff;
+      font-size: 11px; font-weight: 500; color: #fff;
       border-radius: 0 0 13px 13px;
       text-transform: capitalize;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-
-    .reel-frame.win-pulse {
-      animation: winPulse 0.45s ease 4;
-    }
-
+    .reel-frame.win-pulse { animation: winPulse 0.45s ease 4; }
     @keyframes winPulse {
       0%   { transform: scale(1);    box-shadow: 0 0 0 3px var(--locked-glow); }
       50%  { transform: scale(1.07); box-shadow: 0 0 20px 6px var(--locked-glow); }
@@ -124,8 +139,7 @@
       border-radius: 12px;
       padding: 0.8rem 3rem;
       font-family: 'Syne', sans-serif;
-      font-size: 17px;
-      font-weight: 800;
+      font-size: 17px; font-weight: 800;
       letter-spacing: 0.5px;
       cursor: pointer;
       transition: transform 0.12s, opacity 0.12s;
@@ -137,27 +151,14 @@
 
     .result {
       font-family: 'Syne', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      min-height: 30px;
-      text-align: center;
+      font-size: 20px; font-weight: 700;
+      min-height: 30px; text-align: center;
       letter-spacing: -0.2px;
     }
     .result.win  { color: var(--win); }
     .result.lose { color: var(--muted); }
 
     .counter { font-size: 12px; color: var(--muted); margin-top: 8px; }
-
-    /* error */
-    .error-box {
-      background: rgba(239,68,68,0.1);
-      border: 1px solid rgba(239,68,68,0.3);
-      border-radius: 10px;
-      padding: 1rem 1.5rem;
-      font-size: 13px;
-      color: #f87171;
-      text-align: center;
-    }
 
     @media (max-width: 480px) {
       .reel-frame { width: 100px; height: 100px; }
@@ -172,20 +173,19 @@
     <p>Cocokkan 3 pasukan yang sama untuk menang!</p>
   </div>
 
-  <%
-    /* Jika render error dari server bisa dikirim via locals */
-    const hasError = typeof errorMsg !== 'undefined' && errorMsg;
-    const safeData = (typeof pasukan !== 'undefined' && pasukan && pasukan.length >= 3)
-      ? pasukan
-      : null;
-  %>
+  <!-- loading -->
+  <div id="loading-wrap">
+    <div class="loading-bar"><div class="loading-bar-inner"></div></div>
+    <p class="loading-text">Memuat data pasukan...</p>
+  </div>
 
-  <% if (hasError || !safeData) { %>
-    <div class="error-box">
-      ⚠️ <%= hasError ? errorMsg : 'Data pasukan tidak ditemukan atau kurang dari 3.' %>
-    </div>
-  <% } else { %>
+  <!-- error -->
+  <div id="error-wrap">
+    <div class="error-box" id="error-msg"></div>
+  </div>
 
+  <!-- main -->
+  <div id="main-wrap">
     <div class="reels">
       <div class="reel-frame" id="reel-0">
         <img id="img-0" src="" alt="" />
@@ -207,114 +207,121 @@
     <button class="btn-spin" id="spin-btn" onclick="startSpin()">▶ SPIN</button>
     <div class="result" id="result"></div>
     <div class="counter" id="counter"></div>
+  </div>
 
-    <script>
-        
-      /* Data pasukan di-inject langsung dari EJS — tidak perlu fetch lagi */
-      const allPasukan = <%- JSON.stringify(safeData) %>;
+  <script>
+    let allPasukan = [];
+    let locked     = [false, false, false];
+    let intervals  = [null, null, null];
+    let isSpinning = false;
+    let spinCount  = 0;
+    const STOP_DELAYS = [600, 1150, 1800];
 
-      let reelValues  = [null, null, null];
-      let locked      = [false, false, false];
-      let intervals   = [null, null, null];
-      let isSpinning  = false;
-      let spinCount   = 0;
-      const STOP_DELAYS = [600, 1150, 1800];
+    // fetch dari client
+    fetch('/api/pasukanRoll')
+      .then(res => {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+        if (!data || data.length < 3)
+          throw new Error('Data pasukan kurang dari 3');
+        allPasukan = data;
+        init();
+      })
+      .catch(err => {
+        document.getElementById('loading-wrap').style.display = 'none';
+        document.getElementById('error-wrap').style.display  = 'block';
+        document.getElementById('error-msg').textContent     = '⚠️ Gagal memuat pasukan: ' + err.message;
+      });
 
-      function rand() {
-        return allPasukan[Math.floor(Math.random() * allPasukan.length)];
-      }
+    function init() {
+      document.getElementById('loading-wrap').style.display = 'none';
+      document.getElementById('main-wrap').style.display    = 'flex';
+      for (let i = 0; i < 3; i++) setReel(i, rand());
+    }
 
-      function setReel(idx, p) {
-        document.getElementById('img-'  + idx).src         = p.url;
-        document.getElementById('img-'  + idx).alt         = p.name;
-        document.getElementById('name-' + idx).textContent = p.name;
-      }
+    function rand() {
+      return allPasukan[Math.floor(Math.random() * allPasukan.length)];
+    }
 
-      /* tampil 3 gambar acak saat halaman dibuka */
+    function setReel(idx, p) {
+      document.getElementById('img-'  + idx).src         = p.path;
+      document.getElementById('img-'  + idx).alt         = p.name;
+      document.getElementById('name-' + idx).textContent = p.name;
+    }
+
+    function startSpin() {
+      if (isSpinning) return;
+      isSpinning = true;
+      spinCount++;
+
       for (let i = 0; i < 3; i++) {
-        const p = rand();
-        reelValues[i] = p;
-        setReel(i, p);
+        locked[i] = false;
+        const f = document.getElementById('reel-' + i);
+        f.classList.remove('locked', 'win-pulse');
+        f.classList.add('spinning');
       }
 
-      function startSpin() {
-        if (isSpinning) return;
-        isSpinning = true;
-        spinCount++;
+      document.getElementById('result').textContent   = '';
+      document.getElementById('result').className     = 'result';
+      document.getElementById('counter').textContent  = '';
+      document.getElementById('spin-btn').disabled    = true;
+      document.getElementById('spin-btn').textContent = '⏳ Spinning...';
 
-        for (let i = 0; i < 3; i++) {
-          locked[i] = false;
-          const f = document.getElementById('reel-' + i);
-          f.classList.remove('locked', 'win-pulse');
-          f.classList.add('spinning');
-        }
-
-        document.getElementById('result').textContent = '';
-        document.getElementById('result').className   = 'result';
-        document.getElementById('counter').textContent = '';
-        document.getElementById('spin-btn').disabled   = true;
-        document.getElementById('spin-btn').textContent = '⏳ Spinning...';
-
-        /* tentukan target akhir */
-        const targets = [rand(), rand(), rand()];
-        if (Math.random() < 0.18) {
-          const w = rand();
-          targets[0] = targets[1] = targets[2] = w;
-        }
-
-        /* flash cepat */
-        for (let i = 0; i < 3; i++) {
-          intervals[i] = setInterval(() => {
-            if (!locked[i]) setReel(i, rand());
-          }, 75);
-        }
-
-        /* hentikan berurutan kiri → kanan */
-        for (let i = 0; i < 3; i++) {
-          setTimeout((() => {
-            const idx = i;
-            return () => {
-              clearInterval(intervals[idx]);
-              locked[idx] = true;
-              reelValues[idx] = targets[idx];
-              setReel(idx, targets[idx]);
-
-              const f = document.getElementById('reel-' + idx);
-              f.classList.remove('spinning');
-              f.classList.add('locked');
-
-              if (idx === 2) setTimeout(() => evalResult(targets), 200);
-            };
-          })(), STOP_DELAYS[i]);
-        }
+      const targets = [rand(), rand(), rand()];
+      if (Math.random() < 0.18) {
+        const w = rand();
+        targets[0] = targets[1] = targets[2] = w;
       }
 
-      function evalResult(targets) {
-        isSpinning = false;
-        document.getElementById('spin-btn').disabled    = false;
-        document.getElementById('spin-btn').textContent = '▶ SPIN';
-        document.getElementById('counter').textContent  = `Putaran ke-${spinCount}`;
-
-        const el       = document.getElementById('result');
-        const jackpot  = targets[0].name === targets[1].name &&
-                         targets[1].name === targets[2].name;
-
-        if (jackpot) {
-          el.textContent = '🎉 JACKPOT! ' + targets[0].name.toUpperCase() + ' MENANG!';
-          el.className   = 'result win';
-          for (let i = 0; i < 3; i++)
-            document.getElementById('reel-' + i).classList.add('win-pulse');
-        } else {
-          const counts = {};
-          targets.forEach(t => counts[t.name] = (counts[t.name] || 0) + 1);
-          const max = Math.max(...Object.values(counts));
-          el.textContent = max === 2 ? '😅 Hampir! 2 cocok — spin lagi!' : '❌ Tidak ada yang cocok.';
-          el.className   = 'result lose';
-        }
+      for (let i = 0; i < 3; i++) {
+        intervals[i] = setInterval(() => {
+          if (!locked[i]) setReel(i, rand());
+        }, 75);
       }
-    </script>
 
-  <% } %>
+      for (let i = 0; i < 3; i++) {
+        setTimeout((() => {
+          const idx = i;
+          return () => {
+            clearInterval(intervals[idx]);
+            locked[idx] = true;
+            setReel(idx, targets[idx]);
+            const f = document.getElementById('reel-' + idx);
+            f.classList.remove('spinning');
+            f.classList.add('locked');
+            if (idx === 2) setTimeout(() => evalResult(targets), 200);
+          };
+        })(), STOP_DELAYS[i]);
+      }
+    }
+
+    function evalResult(targets) {
+      isSpinning = false;
+      document.getElementById('spin-btn').disabled    = false;
+      document.getElementById('spin-btn').textContent = '▶ SPIN';
+      document.getElementById('counter').textContent  = `Putaran ke-${spinCount}`;
+
+      const el      = document.getElementById('result');
+      const jackpot = targets[0].name === targets[1].name &&
+                      targets[1].name === targets[2].name;
+
+      if (jackpot) {
+        el.textContent = '🎉 JACKPOT! ' + targets[0].name.toUpperCase() + ' MENANG!';
+        el.className   = 'result win';
+        for (let i = 0; i < 3; i++)
+          document.getElementById('reel-' + i).classList.add('win-pulse');
+      } else {
+        const counts = {};
+        targets.forEach(t => counts[t.name] = (counts[t.name] || 0) + 1);
+        const max = Math.max(...Object.values(counts));
+        el.textContent = max === 2 ? '😅 Hampir! 2 cocok — spin lagi!' : '❌ Tidak ada yang cocok.';
+        el.className   = 'result lose';
+      }
+    }
+  </script>
 
 </body>
 </html>

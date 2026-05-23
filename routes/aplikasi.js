@@ -1,3 +1,6 @@
+const fs = require('fs').promises;
+const path = require('path');
+
 const express = require('express');
 const aplikasi    = express.Router();
 
@@ -25,10 +28,16 @@ aplikasi.get('/pasukan', (req, res) => {
 
 
 
-aplikasi.get('/spin', (req, res) => {
-  res.render('aplikasi/spin', {
-    layout: false
-  });
+aplikasi.get('/spin', async (req, res) => {
+  try {
+    res.render('aplikasi/spin', {
+      layout: false
+    });
+  } catch(err){
+    console.error(err);
+    res.status(500).send('Gagal mengambil json');
+  }
+
 })
 
 

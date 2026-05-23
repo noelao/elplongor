@@ -68,13 +68,13 @@ api.get('/base/:id/:kategori/:urutkan', async (req, res) => {
 
 api.get('/pasukanRoll', async (req, res) => {
     try {
-        const id = req.params.id;
         const filePath = path.join(__dirname,'..', 'data', 'spin', `spin.json`);
         
         const rawData = await fs.readFile(filePath, 'utf-8');
         
         const jsonData = JSON.parse(rawData);
-        res.json(jsonData);
+        console.log(jsonData);
+        res.json(jsonData.children);
     } catch(err){
         console.error(err);
         res.status(500).send('Gagal mengambil json');
