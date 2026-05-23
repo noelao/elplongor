@@ -217,6 +217,16 @@
     let spinCount  = 0;
     const STOP_DELAYS = [600, 1150, 1800];
 
+    // SFX
+    const sfxClick = new Audio('/sound/sfx/click.mp3');
+    function playClick() { sfxClick.currentTime = 0; sfxClick.play().catch(() => {}); }
+
+    const sfxSpin = new Audio('/sound/sfx/typing2.mp3');
+    sfxSpin.loop = true;
+    sfxSpin.volume = 0.2;
+    function spinStart() { sfxSpin.currentTime = 0; sfxSpin.play().catch(() => {}); }
+    function spinStop()  { sfxSpin.pause(); sfxSpin.currentTime = 0; }
+
     // fetch dari client
     fetch('/api/pasukanRoll')
       .then(res => {
@@ -256,6 +266,8 @@
       if (isSpinning) return;
       isSpinning = true;
       spinCount++;
+      playClick(); // SFX tombol spin
+      spinStart(); // SFX spinning mulai
 
       for (let i = 0; i < 3; i++) {
         locked[i] = false;
@@ -292,7 +304,8 @@
             const f = document.getElementById('reel-' + idx);
             f.classList.remove('spinning');
             f.classList.add('locked');
-            if (idx === 2) setTimeout(() => evalResult(targets), 200);
+            playClick(); // SFX tiap reel berhenti
+            if (idx === 2) { spinStop(); setTimeout(() => evalResult(targets), 200); }
           };
         })(), STOP_DELAYS[i]);
       }
