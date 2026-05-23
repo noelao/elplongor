@@ -10,10 +10,13 @@ api.get('/', (req, res) => {
     res.send({"api":"siap"});
 });
 
-api.get('/base/:id', async (req, res) => {
+api.get('/ambilBase/:th/:kategori/:id', async (req, res) => {
     try {
+        const th = req.params.th;
+        const kategori = req.params.kategori
         const id = req.params.id;
-        const filePath = path.join(__dirname,'..', 'data', 'base', `th${id}.json`);
+
+        const filePath = path.join(__dirname,'..', 'data', 'base', `th${th}.json`);
         
         const rawData = await fs.readFile(filePath, 'utf-8');
         
@@ -63,6 +66,11 @@ api.get('/base/:id/:kategori/:urutkan', async (req, res) => {
     }
 
 });
+
+
+
+
+
 
 
 

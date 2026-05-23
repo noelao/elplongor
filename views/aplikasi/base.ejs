@@ -1,4 +1,3 @@
-
 <!-- content -->
     <style>
 .content {
@@ -751,9 +750,22 @@
     });
 </script>
 
+
+<!-- localStorage -->
+ <script>
+    if(!localStorage.getItem("memilihTOWNHALL")){
+        localStorage.setItem("memilihTOWNHALL", 11);
+    }
+    if(!localStorage.getItem("memilihKATEGORI")){
+        localStorage.setItem("memilihKATEGORI", 0);
+    }
+    if(!localStorage.getItem("urutkan")){
+        localStorage.setItem("urutkan", 0);
+    }
+ </script>
+
 <!-- load data api -->
 <script>
-    let urutkan = 0;
     const dataPilihanKategori = [
         "warBase", "spaceBase", "baseTrolls"
     ]
@@ -761,11 +773,12 @@
         "War Base 👺", "Space Base 🦀", "Base Trolls 😂"
     ]
 
-
+    
     const dataPilihanTh = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
-
-    let memilihTOWNHALL = 18;
-    let memilihKATEGORI = "baseTrolls";
+    
+    let urutkan = localStorage.getItem("urutkan");
+    let memilihTOWNHALL = localStorage.getItem("memilihTOWNHALL");
+    let memilihKATEGORI = localStorage.getItem("memilihKATEGORI");
 
 
 
@@ -797,7 +810,7 @@
             `;
 
             console.log(urutkan);
-            const data = await fetch("/api/base/"+townhall+"/"+kategori+"/"+urutkan);
+            const data = await fetch("/api/base/"+townhall+"/"+dataPilihanKategori[kategori]+"/"+urutkan);
             if(!data.ok){
                 throw new Error("Gagal mengambil data");
             }
@@ -898,13 +911,15 @@
         console.log("Batas maksimal setelah load: " + (scrollBox.scrollWidth - scrollBox.clientWidth));
     });
 
+    
+    // visualkan th yang dipilih
     const pilihanTh = document.querySelectorAll(".kumpulan img");
     const tampilanThTerpilih = document.querySelector(".gambarTh img")
     pilihanTh.forEach((ini, i) => {
         ini.addEventListener("click", function(){
             const iInt = parseInt(i);
             memilihTOWNHALL = iInt + 1;
-            tampilanThTerpilih.src = `/image/thHd/th${iInt +1}.webp`;
+            visualkanThTerpilih(iInt + 1);
             pilihTh.classList.toggle('sedangMemilih');
             pilihanOpsi.classList.toggle('actived');
 
@@ -917,13 +932,30 @@
     const gantiTulisan = document.querySelector(".memilihKategori .tulisan h1")
     pilihanKategori.forEach((ini, i) => {
         ini.addEventListener("click", function(){
-            memilihKATEGORI = dataPilihanKategori[i];
+            const iInt = parseInt(i);
+            memilihKATEGORI = iInt;
             memilihKategori.classList.toggle('sedangMemilih');
             pilihanOpsiKategori.classList.toggle('pilihanOpsiKategoriMuncul');
-
-            gantiTulisan.innerHTML = dataPilihanKategori2[i];
-
+            visualkanKategoriTerpilih(iInt);
             ambilData(memilihTOWNHALL, memilihKATEGORI, urutkan);
         });
     });
+
+    
+    visualkanThTerpilih(memilihTOWNHALL);
+    function visualkanThTerpilih(angkas){
+        tampilanThTerpilih.src = `/image/thHd/th${angkas}.webp`;
+        localStorage.setItem("memilihTOWNHALL", angkas);
+    }
+
+    visualkanKategoriTerpilih(memilihKATEGORI);
+    function visualkanKategoriTerpilih(angka){
+        gantiTulisan.innerHTML = dataPilihanKategori2[angka];
+        localStorage.setItem("memilihKATEGORI", angka);
+    }
+    visualkanFilterTerpilih(urutkan);
+    function visualkanFilterTerpilih(angka){
+        localStorage.setItem("urutkan", angka);
+    }
+
 </script>

@@ -12,6 +12,7 @@ aplikasi.get('/', (req, res) => {
 aplikasi.get('/base', (req, res) => {
   res.render('aplikasi/base');
 });
+
 aplikasi.get('/base/:kategori/:id', (req, res) => {
   const kategori = req.params.kategori;
   const id = req.params.id;
@@ -21,9 +22,15 @@ aplikasi.get('/base/:kategori/:id', (req, res) => {
 
 
 
+
+
+
 aplikasi.get('/pasukan', (req, res) => {
   res.render('aplikasi/pasukan');
 });
+
+
+
 
 
 
