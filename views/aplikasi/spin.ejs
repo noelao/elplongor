@@ -27,20 +27,59 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem 2rem;
     }
 
-    .header { text-align: center; margin-bottom: 2.5rem; }
+    /* ── header ── */
+    .header { text-align: center; margin-bottom: 1.5rem; }
     .header h1 {
       font-family: 'Syne', sans-serif;
-      font-size: 2rem;
+      font-size: 1.75rem;
       font-weight: 800;
       color: var(--accent);
       letter-spacing: -0.5px;
     }
-    .header p { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .header p { font-size: 12px; color: var(--muted); margin-top: 3px; }
 
-    /* loading */
+    /* ── preset selector ── */
+    .preset-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .preset-label {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .preset-btns {
+      display: flex;
+      gap: 6px;
+    }
+    .preset-btn {
+      width: 40px; height: 36px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: #181922;
+      color: #f0f0f5;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .preset-btn.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #0d0e14;
+    }
+    .preset-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    /* ── loading ── */
     #loading-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .loading-bar {
       width: 200px; height: 3px;
@@ -61,7 +100,7 @@
     }
     .loading-text { font-size: 13px; color: var(--muted); }
 
-    /* error */
+    /* ── error ── */
     #error-wrap { display: none; }
     .error-box {
       background: rgba(239,68,68,0.1);
@@ -73,20 +112,29 @@
       text-align: center;
     }
 
-    /* main */
-    #main-wrap { display: none; flex-direction: column; align-items: center; }
+    /* ── main ── */
+    #main-wrap { display: none; flex-direction: column; align-items: center; width: 100%; }
 
-    .reels { display: flex; gap: 16px; margin-bottom: 2rem; }
+    /* ── reels grid ── */
+    .reels {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1.75rem;
+      width: 100%;
+      max-width: 360px;
+    }
 
     .reel-frame {
-      width: 140px; height: 140px;
-      border-radius: 16px;
+      border-radius: 14px;
       border: 1.5px solid var(--border);
       background: var(--surface);
       overflow: hidden;
       position: relative;
       display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s, width 0.25s, height 0.25s;
+      flex-shrink: 0;
     }
     .reel-frame.locked {
       border-color: #22c55e;
@@ -95,18 +143,18 @@
     .reel-frame img {
       width: 100%; height: 100%;
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 12px;
     }
     .reel-frame.spinning img {
       filter: blur(1.5px) brightness(0.8);
     }
     .lock-badge {
       position: absolute;
-      top: 8px; right: 8px;
-      width: 22px; height: 22px;
+      top: 6px; right: 6px;
+      width: 20px; height: 20px;
       background: #22c55e;
       border-radius: 50%;
-      font-size: 11px;
+      font-size: 10px;
       display: flex; align-items: center; justify-content: center;
       color: #fff;
       opacity: 0; transform: scale(0.7);
@@ -118,10 +166,10 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       background: linear-gradient(transparent, rgba(0,0,0,0.75));
-      padding: 18px 6px 7px;
+      padding: 14px 4px 5px;
       text-align: center;
-      font-size: 11px; font-weight: 500; color: #fff;
-      border-radius: 0 0 13px 13px;
+      font-size: 10px; font-weight: 500; color: #fff;
+      border-radius: 0 0 12px 12px;
       text-transform: capitalize;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
@@ -132,38 +180,38 @@
       100% { transform: scale(1);    box-shadow: 0 0 0 3px var(--locked-glow); }
     }
 
+    /* ── tombol spin ── */
     .btn-spin {
       background: var(--accent);
       color: #0d0e14;
       border: none;
       border-radius: 12px;
-      padding: 0.8rem 3rem;
+      padding: 0.8rem 0;
+      width: 100%;
+      max-width: 280px;
       font-family: 'Syne', sans-serif;
       font-size: 17px; font-weight: 800;
       letter-spacing: 0.5px;
       cursor: pointer;
       transition: transform 0.12s, opacity 0.12s;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
-    .btn-spin:hover  { opacity: 0.88; transform: scale(1.03); }
+    .btn-spin:hover  { opacity: 0.88; transform: scale(1.02); }
     .btn-spin:active { transform: scale(0.96); }
     .btn-spin:disabled { opacity: 0.3; cursor: default; transform: none; }
 
+    /* ── hasil ── */
     .result {
       font-family: 'Syne', sans-serif;
-      font-size: 20px; font-weight: 700;
-      min-height: 30px; text-align: center;
+      font-size: 18px; font-weight: 700;
+      min-height: 28px; text-align: center;
       letter-spacing: -0.2px;
+      padding: 0 1rem;
     }
     .result.win  { color: var(--win); }
     .result.lose { color: var(--muted); }
 
-    .counter { font-size: 12px; color: var(--muted); margin-top: 8px; }
-
-    @media (max-width: 480px) {
-      .reel-frame { width: 100px; height: 100px; }
-      .reels { gap: 10px; }
-    }
+    .counter { font-size: 12px; color: var(--muted); margin-top: 6px; }
   </style>
 </head>
 <body>
@@ -171,6 +219,17 @@
   <div class="header">
     <h1>🎰 Pasukan Roll</h1>
     <p>Cocokkan 3 pasukan yang sama untuk menang!</p>
+  </div>
+
+  <!-- preset selector -->
+  <div class="preset-wrap" id="preset-wrap" style="display:none">
+    <span class="preset-label">Slot:</span>
+    <div class="preset-btns">
+      <button class="preset-btn active" data-val="3" onclick="setPreset(3)">3</button>
+      <button class="preset-btn"        data-val="4" onclick="setPreset(4)">4</button>
+      <button class="preset-btn"        data-val="5" onclick="setPreset(5)">5</button>
+      <button class="preset-btn"        data-val="6" onclick="setPreset(6)">6</button>
+    </div>
   </div>
 
   <!-- loading -->
@@ -186,48 +245,31 @@
 
   <!-- main -->
   <div id="main-wrap">
-    <div class="reels">
-      <div class="reel-frame" id="reel-0">
-        <img id="img-0" src="" alt="" />
-        <div class="reel-name" id="name-0"></div>
-        <div class="lock-badge">✓</div>
-      </div>
-      <div class="reel-frame" id="reel-1">
-        <img id="img-1" src="" alt="" />
-        <div class="reel-name" id="name-1"></div>
-        <div class="lock-badge">✓</div>
-      </div>
-      <div class="reel-frame" id="reel-2">
-        <img id="img-2" src="" alt="" />
-        <div class="reel-name" id="name-2"></div>
-        <div class="lock-badge">✓</div>
-      </div>
-    </div>
-
+    <div class="reels" id="reels"></div>
     <button class="btn-spin" id="spin-btn" onclick="startSpin()">▶ SPIN</button>
     <div class="result" id="result"></div>
     <div class="counter" id="counter"></div>
   </div>
 
   <script>
-    let allPasukan = [];
-    let locked     = [false, false, false];
-    let intervals  = [null, null, null];
-    let isSpinning = false;
-    let spinCount  = 0;
-    const STOP_DELAYS = [600, 1150, 1800];
+    let allPasukan  = [];
+    let locked      = [];
+    let intervals   = [];
+    let isSpinning  = false;
+    let spinCount   = 0;
+    let slotCount   = 3;
 
     // SFX
     const sfxClick = new Audio('/sound/sfx/click.mp3');
     function playClick() { sfxClick.currentTime = 0; sfxClick.play().catch(() => {}); }
 
-    const sfxSpin = new Audio('/sound/sfx/typing2.mp3');
-    sfxSpin.loop = true;
-    sfxSpin.volume = 0.2;
+    const sfxSpin = new Audio('/sound/sfx/click.mp3');
+    sfxSpin.loop   = true;
+    sfxSpin.volume = 0.3;
     function spinStart() { sfxSpin.currentTime = 0; sfxSpin.play().catch(() => {}); }
     function spinStop()  { sfxSpin.pause(); sfxSpin.currentTime = 0; }
 
-    // fetch dari client
+    // ── fetch ──────────────────────────────────────────────────────
     fetch('/api/pasukanRoll')
       .then(res => {
         if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -246,12 +288,64 @@
         document.getElementById('error-msg').textContent     = '⚠️ Gagal memuat pasukan: ' + err.message;
       });
 
+    // ── init ───────────────────────────────────────────────────────
     function init() {
       document.getElementById('loading-wrap').style.display = 'none';
       document.getElementById('main-wrap').style.display    = 'flex';
-      for (let i = 0; i < 3; i++) setReel(i, rand());
+      document.getElementById('preset-wrap').style.display  = 'flex';
+      buildReels(slotCount);
     }
 
+    // ── ukuran reel berdasarkan jumlah slot ────────────────────────
+    function reelSize(count) {
+      if (count <= 3) return 110;
+      if (count === 4) return 100;
+      if (count === 5) return 90;
+      return 80; // 6
+    }
+
+    // ── bangun reel DOM ────────────────────────────────────────────
+    function buildReels(count) {
+      const container = document.getElementById('reels');
+      container.innerHTML = '';
+      locked    = Array(count).fill(false);
+      intervals = Array(count).fill(null);
+
+      const size = reelSize(count) + 'px';
+
+      for (let i = 0; i < count; i++) {
+        const frame = document.createElement('div');
+        frame.className = 'reel-frame';
+        frame.id = 'reel-' + i;
+        frame.style.width  = size;
+        frame.style.height = size;
+
+        frame.innerHTML = `
+          <img id="img-${i}" src="" alt="" />
+          <div class="reel-name" id="name-${i}"></div>
+          <div class="lock-badge">✓</div>
+        `;
+        container.appendChild(frame);
+        setReel(i, rand());
+      }
+    }
+
+    // ── ganti preset ───────────────────────────────────────────────
+    function setPreset(val) {
+      if (isSpinning) return;
+      slotCount = val;
+
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.val) === val);
+      });
+
+      buildReels(val);
+      document.getElementById('result').textContent  = '';
+      document.getElementById('result').className    = 'result';
+      document.getElementById('counter').textContent = '';
+    }
+
+    // ── helpers ────────────────────────────────────────────────────
     function rand() {
       return allPasukan[Math.floor(Math.random() * allPasukan.length)];
     }
@@ -262,14 +356,18 @@
       document.getElementById('name-' + idx).textContent = p.name;
     }
 
+    // ── spin ───────────────────────────────────────────────────────
     function startSpin() {
       if (isSpinning) return;
       isSpinning = true;
       spinCount++;
-      playClick(); // SFX tombol spin
-      spinStart(); // SFX spinning mulai
+      playClick();
+      spinStart();
 
-      for (let i = 0; i < 3; i++) {
+      // nonaktifkan preset saat spinning
+      document.querySelectorAll('.preset-btn').forEach(b => b.disabled = true);
+
+      for (let i = 0; i < slotCount; i++) {
         locked[i] = false;
         const f = document.getElementById('reel-' + i);
         f.classList.remove('locked', 'win-pulse');
@@ -282,55 +380,63 @@
       document.getElementById('spin-btn').disabled    = true;
       document.getElementById('spin-btn').textContent = '⏳ Spinning...';
 
-      const targets = [rand(), rand(), rand()];
-      if (Math.random() < 0.18) {
-        const w = rand();
-        targets[0] = targets[1] = targets[2] = w;
-      }
+      // target akhir tiap reel
+      const targets = Array.from({ length: slotCount }, rand);
 
-      for (let i = 0; i < 3; i++) {
+      // flash cepat
+      for (let i = 0; i < slotCount; i++) {
         intervals[i] = setInterval(() => {
           if (!locked[i]) setReel(i, rand());
         }, 75);
       }
 
-      for (let i = 0; i < 3; i++) {
-        setTimeout((() => {
-          const idx = i;
-          return () => {
-            clearInterval(intervals[idx]);
-            locked[idx] = true;
-            setReel(idx, targets[idx]);
-            const f = document.getElementById('reel-' + idx);
-            f.classList.remove('spinning');
-            f.classList.add('locked');
-            playClick(); // SFX tiap reel berhenti
-            if (idx === 2) { spinStop(); setTimeout(() => evalResult(targets), 200); }
-          };
-        })(), STOP_DELAYS[i]);
+      // hentikan berurutan — jeda 550ms antar reel
+      for (let i = 0; i < slotCount; i++) {
+        setTimeout((idx => () => {
+          clearInterval(intervals[idx]);
+          locked[idx] = true;
+          setReel(idx, targets[idx]);
+          const f = document.getElementById('reel-' + idx);
+          f.classList.remove('spinning');
+          f.classList.add('locked');
+          playClick();
+          if (idx === slotCount - 1) {
+            spinStop();
+            setTimeout(() => evalResult(targets), 200);
+          }
+        })(i), 600 + i * 550);
       }
     }
 
+    // ── evaluasi — menang bila ada 3 nama yang sama ────────────────
     function evalResult(targets) {
       isSpinning = false;
       document.getElementById('spin-btn').disabled    = false;
       document.getElementById('spin-btn').textContent = '▶ SPIN';
       document.getElementById('counter').textContent  = `Putaran ke-${spinCount}`;
+      document.querySelectorAll('.preset-btn').forEach(b => b.disabled = false);
 
-      const el      = document.getElementById('result');
-      const jackpot = targets[0].name === targets[1].name &&
-                      targets[1].name === targets[2].name;
+      const el     = document.getElementById('result');
+      const counts = {};
+      targets.forEach(t => counts[t.name] = (counts[t.name] || 0) + 1);
+      const maxCount  = Math.max(...Object.values(counts));
+      const maxName   = Object.keys(counts).find(k => counts[k] === maxCount);
+      const winFrames = targets
+        .map((t, i) => ({ t, i }))
+        .filter(o => o.t.name === maxName)
+        .map(o => o.i);
 
-      if (jackpot) {
-        el.textContent = '🎉 JACKPOT! ' + targets[0].name.toUpperCase() + ' MENANG!';
+      if (maxCount >= 3) {
+        el.textContent = `🎉 JACKPOT! ${maxCount}x ${maxName.toUpperCase()} MENANG!`;
         el.className   = 'result win';
-        for (let i = 0; i < 3; i++)
-          document.getElementById('reel-' + i).classList.add('win-pulse');
+        winFrames.forEach(i =>
+          document.getElementById('reel-' + i).classList.add('win-pulse')
+        );
+      } else if (maxCount === 2) {
+        el.textContent = '😅 Hampir! 2 cocok — spin lagi!';
+        el.className   = 'result lose';
       } else {
-        const counts = {};
-        targets.forEach(t => counts[t.name] = (counts[t.name] || 0) + 1);
-        const max = Math.max(...Object.values(counts));
-        el.textContent = max === 2 ? '😅 Hampir! 2 cocok — spin lagi!' : '❌ Tidak ada yang cocok.';
+        el.textContent = '❌ Tidak ada yang cocok.';
         el.className   = 'result lose';
       }
     }

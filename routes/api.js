@@ -73,7 +73,6 @@ api.get('/pasukanRoll', async (req, res) => {
         const rawData = await fs.readFile(filePath, 'utf-8');
         
         const jsonData = JSON.parse(rawData);
-        console.log(jsonData);
         res.json(jsonData.children);
     } catch(err){
         console.error(err);
