@@ -520,7 +520,9 @@
     <div class="garis"></div>
 
     <div class="tampilkanHasil">
-        <h2>Hasil base Untuk TH 18 :</h2>
+        <h2>Hasil base Untuk TH 18 :<br>
+            <small>townhall is true</small>
+        </h2>
         <div class="filter">
             <div class="tengah">
                 <div class="terpilihBg"></div>
@@ -780,6 +782,8 @@
     let memilihTOWNHALL = localStorage.getItem("memilihTOWNHALL");
     let memilihKATEGORI = localStorage.getItem("memilihKATEGORI");
 
+    let jumlahData = 0;
+
 
 
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -816,83 +820,101 @@
             }
             dataTh = await data.json();
             await delay(500);
-
         } catch(err) {
+            await delay(1000);
+            jumlahData = 0;
+            visualkanThTerpilih(memilihTOWNHALL);
+            wrapper.innerHTML = `
+                <div class="tiga" style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-direction: column; line-height: 1;">
+                    <br>
+                    <h2>tidak ada data untuk townhall ${memilihTOWNHALL}<br></h2>
+                    <h1>
+                        😔🙏
+                    </h1>
+                    <br>
+                </div>
+            `;
             console.log(err);
         } finally {
-            wrapper.innerHTML = "";
-            // partials
-            const selingan = `
-            <div class="selingan quote">
-                <h2>" Musuhnya musuh adalah teman "</h2>
-                <small>SUN TZU</small>
-            </div>
-            <div class="selingan card"></div>
-            `
-            const nextData = `
-            <div class="nextData">
-                <div class="panah tombol">
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--hitam)" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
-                    </svg>
+            if(dataTh.data.length != 0){
+                console.log('tidak ada data di sini')
+                wrapper.innerHTML = "";
+                // partials
+                const selingan = `
+                <div class="selingan quote">
+                    <h2>" Musuhnya musuh adalah teman "</h2>
+                    <small>SUN TZU</small>
                 </div>
-            </div>`
-
-            let tiga = "";
-            for(i in dataTh.data){
-                const id = dataTh.data[i].id
-                const dataaa = dataTh.data[i]
-
-                let image = `<img src="/image/base/th17/base.webp" alt="">`;
-                if(dataaa.image){
-                    console.log(dataaa.image);
-                    image = `<img src="${dataaa.image}" alt="">`;
-                }
-
-                const card = `
-                <a href="/aplikasi/base/${kategori}/${id}" class="card">
-                    <div class="card-content">
-                        <div class="embel">
-                            <div class="id">
-                                ${dataaa.id}
-                            </div>
-                            <div class="star-display" style="--rating: ${dataaa.rating};" aria-label="Rating 3.5 dari 5"></div>
-                        </div>
-                        ${image}
-                    </div>
-                </a>
+                <div class="selingan card"></div>
                 `
-                tiga += card;
-                const iInt = parseInt(i);
-
-                if((iInt+1) % 3 == 0){
-                    wrapper.innerHTML += `
-                    <div class="tiga">
-                        ${tiga}
+                const nextData = `
+                <div class="nextData">
+                    <div class="panah tombol">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--hitam)" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
+                        </svg>
                     </div>
-                    `;
-
-                    tiga = "";
-                    
-                    if(dataTh.data.length - iInt <= 3){
-                        wrapper.innerHTML += selingan;
+                </div>`
+    
+                
+                jumlahData = dataTh.data.length;
+                console.log(dataTh.data.length)
+                let tiga = "";
+                for(i in dataTh.data){
+                    const id = dataTh.data[i].id
+                    const dataaa = dataTh.data[i]
+    
+                    let image = `<img src="/image/base/th17/base.webp" alt="">`;
+                    if(dataaa.image){
+                        console.log(dataaa.image);
+                        image = `<img src="${dataaa.image}" alt="">`;
+                    }
+    
+                    const card = `
+                    <a href="/aplikasi/base/${kategori}/${id}" class="card">
+                        <div class="card-content">
+                            <div class="embel">
+                                <div class="id">
+                                    ${dataaa.id}
+                                </div>
+                                <div class="star-display" style="--rating: ${dataaa.rating};" aria-label="Rating 3.5 dari 5"></div>
+                            </div>
+                            ${image}
+                        </div>
+                    </a>
+                    `
+                    tiga += card;
+                    const iInt = parseInt(i);
+    
+                    if((iInt+1) % 3 == 0){
+                        wrapper.innerHTML += `
+                        <div class="tiga">
+                            ${tiga}
+                        </div>
+                        `;
+    
+                        tiga = "";
+                        
+                        if(dataTh.data.length - iInt <= 3){
+                            wrapper.innerHTML += selingan;
+                        }
                     }
                 }
+    
+                wrapper.innerHTML += `
+                <div class="tiga">
+                    ${tiga}
+                </div>
+                `;
+                visualkanThTerpilih(memilihTOWNHALL);
+    
+                if(dataTh.data.length > 6){
+                    wrapper.innerHTML += nextData;
+                } else {
+                }
             }
-
-            wrapper.innerHTML += `
-            <div class="tiga">
-                ${tiga}
-            </div>
-            `;
-            if(dataTh.data.length > 6){
-                wrapper.innerHTML += nextData;
-            } else {
-            }
-
         }
-
     }
 
 </script>
@@ -942,9 +964,12 @@
     });
 
     
+    const tampilkanHasil = document.querySelector(".tampilkanHasil h2");
     visualkanThTerpilih(memilihTOWNHALL);
     function visualkanThTerpilih(angkas){
         tampilanThTerpilih.src = `/image/thHd/th${angkas}.webp`;
+        tampilkanHasil.innerHTML = `Hasil base Untuk TH ${angkas} :<br>
+            <small style="opacity: .4; font-weight: 400;">base di temukan : ${jumlahData}</small>`;
         localStorage.setItem("memilihTOWNHALL", angkas);
     }
 
