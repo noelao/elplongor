@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pasukan Roll — Spin</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -91,6 +93,8 @@
       height: 100%;
       background: var(--accent);
       border-radius: 4px;
+      width: 0%;
+      transition: width 0.3s ease;
       animation: loadBar 1.2s ease-in-out infinite;
     }
     @keyframes loadBar {
@@ -234,8 +238,8 @@
 
   <!-- loading -->
   <div id="loading-wrap">
-    <div class="loading-bar"><div class="loading-bar-inner"></div></div>
-    <p class="loading-text">Memuat data pasukan...</p>
+    <div class="loading-bar"><div class="loading-bar-inner" id="loading-bar-inner"></div></div>
+    <p class="loading-text" id="loading-text">Memuat data pasukan...</p>
   </div>
 
   <!-- error -->
@@ -258,6 +262,7 @@
     let isSpinning  = false;
     let spinCount   = 0;
     let slotCount   = 3;
+    let imageCache  = {};
 
     // SFX
     const sfxClick = new Audio('/sound/sfx/click.mp3');
@@ -276,10 +281,12 @@
         return res.json();
       })
       .then(data => {
-        console.log(data);
         if (!data || data.length < 3)
           throw new Error('Data pasukan kurang dari 3');
         allPasukan = data;
+        return preloadImages(data);
+      })
+      .then(() => {
         init();
       })
       .catch(err => {
@@ -287,6 +294,37 @@
         document.getElementById('error-wrap').style.display  = 'block';
         document.getElementById('error-msg').textContent     = '⚠️ Gagal memuat pasukan: ' + err.message;
       });
+
+    // ── preload semua gambar ───────────────────────────────────────
+    function preloadImages(pasukanList) {
+      const loadText = document.getElementById('loading-text');
+      const loadBar  = document.getElementById('loading-bar-inner');
+      const total    = pasukanList.length;
+      let   done     = 0;
+
+      // Hentikan animasi indeterminate, beralih ke mode progress nyata
+      loadBar.style.animation  = 'none';
+      loadBar.style.marginLeft = '0';
+      loadBar.style.width      = '0%';
+      loadText.textContent     = `Mengunduh gambar... 0/${total}`;
+
+      const promises = pasukanList.map(p =>
+        new Promise(resolve => {
+          const img = new Image();
+          img.onload = img.onerror = () => {
+            imageCache[p.path] = img;
+            done++;
+            const pct = Math.round((done / total) * 100);
+            loadBar.style.width  = pct + '%';
+            loadText.textContent = `Mengunduh gambar... ${done}/${total}`;
+            resolve();
+          };
+          img.src = p.path;
+        })
+      );
+
+      return Promise.all(promises);
+    }
 
     // ── init ───────────────────────────────────────────────────────
     function init() {
