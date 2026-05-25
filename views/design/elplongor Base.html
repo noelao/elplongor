@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://localhost:3000/donate -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elplongor Base</title>
+    <link rel="preload" href="http://localhost:3000/fonts/mobbin.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="shortcut icon" href="http://localhost:3000/logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="../../public/css/main.css">
+    <link rel="stylesheet" href="../../public/css/navBar.css">
+    <style>
+        @font-face {
+            font-family: mobbin;
+            src: url(../../public/fonts/mobbin.woff2);
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="iniNav">
+        <div class="iniWarnaNav">
+            <div class="atas">
+                <div class="garis"></div>
+            </div>
+            <div class="bawah">
+                <a href="http://localhost:3000/" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="24" height="24">
+                        <path d="M 0 0 H 192 L 0 192 H 192 Z" fill="currentColor"></path>
+                    </svg>
+                </a>
+                <div class="navMenu">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const navMenu = document.querySelector(".iniWarnaNav .navMenu")
+    navMenu.addEventListener("click", function(){
+        navMenu.parentElement.parentElement.parentElement.parentElement.classList.toggle("kepencet");
+    })
+</script>
+
+
+
+
+
+
+<style>
+/* Footer Container */
+.main-footer {
+    min-height: 50vh;
+
+    width: 100%;
+    padding: 20px 0;
+    border-top: 1px solid #eeeeee; /* Garis tipis transparan */
+    background-color: transparent; /* Mengikuti background body */
+    font-family: inherit; /* Menggunakan font utama kamu */
+    margin-top: 1rem;
+
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: #666; /* Warna teks abu-abu minimalis */
+    font-size: 0.9rem;
+}
+
+/* Styling Efek Mengetik */
+.highlight {
+    color: #333; /* Warna lebih gelap untuk teks yang diketik */
+    font-weight: 600;
+}
+
+.cursor {
+    color: #007bff; /* Warna kursor (sesuaikan dengan tema kamu) */
+    font-weight: bold;
+    animation: blink 0.7s infinite;
+    background: #007bff;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+</style>
+
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <p>© 2026 noelao. All rights reserved.</p>
+        </div>
+        
+        <div class="footer-right">
+            <p>Build with Love <span id="typing-text" class="highlight"></span><span class="cursor">💖</span></p>
+            <p>Design inspired by <a target="_blank" href="https://mobbin.com/">mobbin</a></p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- DOMContentLoaded -->
+ <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. Ambil parameter dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetId = urlParams.get('target'); // Mengambil nilai 'section'
+
+    if (targetId) {
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // 2. Beri delay sedikit lalu scroll dengan halus
+        setTimeout(() => {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 50); // Jeda 0.5 detik setelah halaman terbuka
+      }
+    }
+  });
+</script>
+
+
+
+</body></html>

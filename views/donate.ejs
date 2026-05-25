@@ -1,0 +1,146 @@
+
+<style>
+    .content {
+        padding: 4rem 1rem 2rem;
+        max-width: 600px;
+        margin: 0 auto;
+        font-family: inherit;
+        color: #111;
+    }
+    
+    .content h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+        margin-top: 2.5rem;
+        letter-spacing: -0.01em;
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 0.75rem;
+        color: #444;
+    }
+
+    .content .pilihan {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .content .pilihan > a {
+        border: 1px solid #eaeaea;
+        border-radius: 16px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        background-color: #fff;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .content .pilihan > a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+        border-color: #ddd;
+    }
+
+    .content .foto {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fafafa;
+        border: 1px solid #f0f0f0;
+        overflow: hidden;
+        padding: 8px;
+    }
+
+    .content .foto img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .content .link {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #111;
+    }
+    
+    .content .pilihan > a:hover .link {
+        text-decoration: underline;
+    }
+
+    .qris-container {
+        border: 1px solid #eaeaea;
+        border-radius: 16px;
+        padding: 2.5rem 1.5rem;
+        background-color: #fff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .qris-placeholder {
+        width: 200px;
+        height: 200px;
+        background-color: #fafafa;
+        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #eaeaea;
+        color: #999;
+        font-size: 0.85rem;
+        gap: 0.5rem;
+    }
+    
+    .qris-placeholder svg {
+        width: 32px;
+        height: 32px;
+        opacity: 0.5;
+    }
+</style>
+<div class="content">
+    <h2>Donasi lewat perantara</h2>
+    <div class="pilihan">
+        <div class="opsi saweria">
+            <div class="foto">
+                <img src="https://saweria.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcapy_happy.603c7293.svg&w=384&q=75" alt="">
+            </div>
+            <small class="link">
+                <a href="https://saweria.co/elplongor" target="_blank" rel="noopener">saweria.co/elplongor</a>
+            </small>
+        </div>
+        <div class="opsi sociabuz">
+            <div class="foto">
+                <img src="https://storage.sociabuzz.com/storage/landingpage/img/sociabuzz-logo-icon.png" alt="">
+            </div>
+            <small class="link">
+                <a href="https://sociabuzz.com/noelao/tribe" target="_blank" rel="noopener">sociabuzz.com/noelao/tribe</a>
+            </small>
+        </div>
+    </div>
+
+    <h2>Donasi langsung lewat Qris</h2>
+    <p style="margin: 0; color: #666; font-size: 0.9rem;">lebih membantu karena tanpa potongan harga </p>
+    <div class="qris-container">
+        <div class="qris-placeholder">
+            <span>[ QR Code ]</span>
+        </div>
+        <p style="margin: 0; color: #666; font-size: 0.9rem;">Scan menggunakan e-wallet atau M-Banking favoritmu</p>
+    </div>
+</div>
+
+
+
