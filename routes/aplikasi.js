@@ -13,10 +13,7 @@ aplikasi.get('/base', (req, res) => {
   res.render('aplikasi/base');
 });
 
-aplikasi.get('/base/:kategori/:id', (req, res) => {
-  const kategori = req.params.kategori;
-  const id = req.params.id;
-
+aplikasi.get('/base/:th/:kategori/:id', (req, res) => {
   res.render('aplikasi/baseTerpilih');
 });
 

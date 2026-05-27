@@ -4,6 +4,10 @@
     "data": [
       {
         "id": 1,
+        "uploader":{
+          "nama":"noelao",
+          "pesan":"jangan kemana-mana;"
+        },
         "rating": 4,
         "name": "base",
         "th": 18,
@@ -38,31 +42,15 @@
     "data": [
       {
         "id": 1,
-        "rating": 5,
-        "name": "base",
-        "th": 18,
-        "link": "ini.com"
-      },
-      {
-        "id": 1,
+        "uploader":{
+          "nama":"noelao",
+          "pesan":"jangan kemana-mana;"
+        },
         "rating": 4,
         "name": "base",
         "th": 18,
-        "link": "ini.com"
-      },
-      {
-        "id": 1,
-        "rating": 5,
-        "name": "base",
-        "th": 18,
-        "link": "ini.com"
-      },
-      {
-        "id": 1,
-        "rating": 3,
-        "name": "base",
-        "th": 18,
-        "link": "ini.com"
+        "link": "https://link.clashofclans.com/id?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMfg5jzF_HOtuY2vVIqghJL",
+        "image": "/image/base/th18/base1.jpeg"
       }
     ]
   },

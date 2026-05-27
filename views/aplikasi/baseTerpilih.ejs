@@ -3,15 +3,19 @@
     width: 100%;
     height: max-content;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0;
     margin: 0;
+
     .rotateImage {
         width: 100%;
-        aspect-ratio: 9/16;
+        aspect-ratio: 9/14;
 
         container-type: size;
+
+        background-color:var(--silver);
 
         display: flex;
         justify-content: center;
@@ -25,11 +29,123 @@
             object-fit: cover;
         }
     }
+    .header {
+        width: 100%;
+        padding: 3rem 1rem;
+        display: flex;
+        flex-direction: column;
+        .bawah {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+
+            .copy {
+                margin-top: 1rem;
+                border: solid var(--hitam) 2px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                padding: .5rem;
+                border-radius: 0.75rem;
+                transition: gap .3s ease;
+                cursor: pointer;
+                small {
+                    font-size: 1rem;
+                    font-weight: 700;
+                }
+                svg {
+                    height: 1rem;
+                    rotate: 0deg;
+                }
+            }
+            .copy:active {
+                gap: 2rem;
+            }
+            .star-display {
+                position: relative;
+                display: inline-block;
+                font-size: 32px;
+                color: #d4d4d4;
+                font-family: Arial, sans-serif; 
+            }
+            .star-display::before {
+                content: '★★★★★';
+            }
+            .star-display::after {
+                content: '★★★★★';
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: #ffc107;
+                
+                white-space: nowrap; 
+                overflow: hidden; 
+                
+                width: calc(var(--rating) / 5 * 100%);
+            }
+        }
+    }
 }
 </style>
 
 <div class="content">
-    <div class="rotateImage">
-        <img src="/image/base/th17/base.webp" alt="">
-    </div>
+
+    <!--  -->
+
 </div>
+
+<script>
+    const path = window.location.pathname.split("/");
+    let alamat = path.shift();
+
+    console.log(path);
+
+    let data = {};
+    ambilData();
+    async function ambilData(params) {
+        try {
+            console.log(path[2]);
+            const response = await fetch(`/api/singleBase/${path[2]}/${path[3]}/${path[4]}`);
+            data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            const wrapper = document.querySelector(".content");
+            if(data.uploader){
+                wrapper.innerHTML = `
+                
+    <div class="header">
+        <div class="uploader">
+            <h2>Uploader :</h2>
+            <h3>noelao</h3>
+            <small>jangan kemana-mana</small>
+        </div>
+        <div class="bawah">
+            <a href="${data.link}" class="copy tombol">
+                <small>copy</small>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="var(--hitam)" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"></path>
+                </svg>
+            </a>
+            <div class="star-display" style="--rating: ${data.rating};" aria-label="Rating 3.5 dari 5"></div>
+
+        </div>
+    </div>
+    <div class="rotateImage">
+        <img src="${data.image}" alt="">
+    </div>
+
+
+
+                `
+            }
+        }
+    }
+    
+</script>

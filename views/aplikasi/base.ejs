@@ -787,14 +787,15 @@
 
 
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const wrapper = document.querySelector(".wrapper");
     ambilData(memilihTOWNHALL, memilihKATEGORI, urutkan);
 
 
 
+    let angkaTampil = 6;
+    let dataTh = [];
     async function ambilData(townhall, kategori, urutkan=0){
-        const wrapper = document.querySelector(".wrapper");
         wrapper.innerHTML = "";
-        let dataTh = [];
         try {
             wrapper.innerHTML = `
                         <div class="tiga">
@@ -872,7 +873,7 @@
                     }
     
                     const card = `
-                    <a href="/aplikasi/base/${kategori}/${id}" class="card">
+                    <a href="/aplikasi/base/${memilihTOWNHALL}/${dataPilihanKategori[kategori]}/${id}" class="card">
                         <div class="card-content">
                             <div class="embel">
                                 <div class="id">
@@ -896,20 +897,26 @@
     
                         tiga = "";
                         
-                        if(dataTh.data.length - iInt <= 3){
+                        if(angkaTampil - iInt <= 3){
+                        } else {
                             wrapper.innerHTML += selingan;
                         }
                     }
+                    if(iInt+1 >= angkaTampil){
+                        break;
+                    }
                 }
     
-                wrapper.innerHTML += `
-                <div class="tiga">
-                    ${tiga}
-                </div>
-                `;
+                if(dataTh.data.length > angkaTampil - 6){
+                    wrapper.innerHTML += `
+                    <div class="tiga">
+                        ${tiga}
+                    </div>
+                    `;
+                }
                 visualkanThTerpilih(memilihTOWNHALL);
     
-                if(dataTh.data.length > 6){
+                if(dataTh.data.length > angkaTampil){
                     wrapper.innerHTML += nextData;
                 } else {
                 }
@@ -917,6 +924,15 @@
         }
     }
 
+</script>
+<script>
+    wrapper.addEventListener("click", function(event){
+        const targetElement = event.target.closest('.nextData');
+        if (targetElement && wrapper.contains(targetElement)) {
+            angkaTampil += 6;
+            ambilData(memilihTOWNHALL, memilihKATEGORI, urutkan);
+        }
+    });
 </script>
 
 
@@ -939,6 +955,7 @@
     const tampilanThTerpilih = document.querySelector(".gambarTh img")
     pilihanTh.forEach((ini, i) => {
         ini.addEventListener("click", function(){
+            angkaTampil = 6;
             const iInt = parseInt(i);
             memilihTOWNHALL = iInt + 1;
             visualkanThTerpilih(iInt + 1);
@@ -954,6 +971,7 @@
     const gantiTulisan = document.querySelector(".memilihKategori .tulisan h1")
     pilihanKategori.forEach((ini, i) => {
         ini.addEventListener("click", function(){
+            angkaTampil = 6;
             const iInt = parseInt(i);
             memilihKATEGORI = iInt;
             memilihKategori.classList.toggle('sedangMemilih');
