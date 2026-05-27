@@ -9,13 +9,16 @@ const api = express.Router();
 api.get('/', (req, res) => {
     res.send({"api":"siap"});
 });
-api.get('/base/:id/:kategori/:urutkan', async (req, res) => {
+
+
+
+api.get('/base/:th/:kategori/:urutkan', async (req, res) => {
     try {
-        const id = req.params.id;
+        const th = req.params.th;
         const kategori = req.params.kategori;
         const urutan = req.params.urutkan;
 
-        const filePath = path.join(__dirname,'..', 'data', 'base', `th${id}.json`);
+        const filePath = path.join(__dirname,'..', 'data', 'base', `th${th}.json`);
         
         const rawData = await fs.readFile(filePath, 'utf-8');
         
@@ -47,8 +50,6 @@ api.get('/base/:id/:kategori/:urutkan', async (req, res) => {
     }
 
 });
-
-
 api.get('/singleBase/:th/:kategori/:id', async (req, res) => {
     try {
         const th = req.params.th;
@@ -79,51 +80,22 @@ api.get('/singleBase/:th/:kategori/:id', async (req, res) => {
 
 
 
-api.get('/pasukanRoll', async (req, res) => {
-    try {
-        const filePath = path.join(__dirname,'..', 'data', 'spin', `spin.json`);
-        
-        const rawData = await fs.readFile(filePath, 'utf-8');
-        
-        const jsonData = JSON.parse(rawData);
-        res.json(jsonData.children);
-    } catch(err){
-        console.error(err);
-        res.status(500).send('Gagal mengambil json');
-    }
-});
 
 
 
-api.get('/pasukan/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-        const filePath = path.join(__dirname,'..', 'data', 'pasukan', `th${id}.json`);
-        
-        const rawData = await fs.readFile(filePath, 'utf-8');
-        
-        const jsonData = JSON.parse(rawData);
-        res.json(jsonData);
-    } catch(err){
-        console.error(err);
-        res.status(500).send('Gagal mengambil json');
-    }
+api.get('/pasukan/:th/:kategori/:urutkan', async (req, res) => {
+        try {
+            const th = req.params.th;
+            const kategori = req.params.kategori;
+            const urutan = req.params.urutkan;
 
-});
-api.get('/pasukan/:id/:kategori/:urutkan', async (req, res) => {
-    try {
-        const id = req.params.id;
-        const kategori = req.params.kategori;
-        const urutan = req.params.urutkan;
+            const filePath = path.join(__dirname,'..', 'data', 'pasukan', `th${th}.json`);
+            
+            const rawData = await fs.readFile(filePath, 'utf-8');
+            
+            const jsonData = JSON.parse(rawData);
 
-        const filePath = path.join(__dirname,'..', 'data', 'pasukan', `th${id}.json`);
-        
-        const rawData = await fs.readFile(filePath, 'utf-8');
-        
-        const jsonData = JSON.parse(rawData);
-
-        const typeBase = jsonData.find(item => item.kategori === kategori);
-
+            const typeBase = jsonData.find(item => item.kategori === kategori);
         if (typeBase) {
             if(urutan == 0){
                 let filterData = typeBase.data;
@@ -146,7 +118,62 @@ api.get('/pasukan/:id/:kategori/:urutkan', async (req, res) => {
         console.error(err);
         res.status(500).send('Gagal mengambil json');
     }
+});
+api.get('/singleTrops/:th/:kategori/:id', async (req, res) => {
+    try {
+        const th = req.params.th;
+        const kategori = req.params.kategori;
+        const id = parseInt(req.params.id);
+        const urutan = req.params.urutkan;
+
+        const filePath = path.join(__dirname,'..', 'data', 'pasukan', `th${th}.json`);
+        
+        const rawData = await fs.readFile(filePath, 'utf-8');
+        const jsonData = JSON.parse(rawData);
+
+        const typeBase = jsonData.find(item => item.kategori === kategori);
+        if (typeBase) {
+            const paseTerpilih = typeBase.data.find(item => item.id === id);
+            res.json(paseTerpilih);
+        } else {
+            res.status(404).json({ error: 'Kategori '+kategori+' tidak ditemukan' });
+        }
+    } catch(err){
+        console.error(err);
+        res.status(500).send('Gagal mengambil json || file json tidak ada / tidak ditemukan');
+    }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+api.get('/pasukanRoll', async (req, res) => {
+    try {
+        const filePath = path.join(__dirname,'..', 'data', 'spin', `spin.json`);
+        
+        const rawData = await fs.readFile(filePath, 'utf-8');
+        
+        const jsonData = JSON.parse(rawData);
+        res.json(jsonData.children);
+    } catch(err){
+        console.error(err);
+        res.status(500).send('Gagal mengambil json');
+    }
+});
+
+
 
 module.exports = api;

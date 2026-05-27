@@ -1,41 +1,24 @@
 [
     {
-        "kategori":"baseTrolls",
+        "kategori":"looting",
         "data":
         [
             {
                 "id":1,
+                "uploader":{
+                "nama":"noelao",
+                "pesan":"ambil kolong a dan c dengan hero dan spam valkyrie dari sisi b;"
+                },
                 "rating":4,
-                "name":"dpasukan",
+                "name":"pasukan",
                 "th":18,
-                "link":"https://link.clashofclans.com/id?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMfg5jzF_HOtuY2vVIqghJL",
-                "image":"/image/pasukan/pasukan1.jpeg"
-            },
-            {
-                "id":2,
-                "rating":5,
-                "name":"dpasukan",
-                "th":18,
-                "link":"ini.com"
-            },
-            {
-                "id":3,
-                "rating":5,
-                "name":"dpasukan",
-                "th":18,
-                "link":"ini.com"
-            },
-            {
-                "id":4,
-                "rating":2,
-                "name":"dpasukan",
-                "th":18,
-                "link":"ini.com"
+                "link":"https://link.clashofclans.com/id?action=CopyArmy&army=h2p8e4_34-1p4e20_17-7p11e57_56-4p10e12_40i1x1-6x12-1x75-1x82-1x135d1x98-2x35u39x12-2x82-1x97-1x4-1x91-1x87-1x75s2x3-4x10-1x35-1x2",
+                "image":"/image/pasukan/th18/pasukan1.jpeg"
             }
         ]
     },
     {
-        "kategori":"warBase",
+        "kategori":"spamTrops",
         "data":
         [
             {
@@ -69,7 +52,7 @@
         ]
     },
     {
-        "kategori":"spaceBase",
+        "kategori":"proLevel",
         "data":
         [
             {

@@ -520,7 +520,7 @@
     <div class="garis"></div>
 
     <div class="tampilkanHasil">
-        <h2>Hasil base Untuk TH 18 :<br>
+        <h2>Hasil pasukan Untuk TH 18 :<br>
             <small>townhall is true</small>
         </h2>
         <div class="filter">
@@ -716,9 +716,9 @@
         <div class="pilihanKategori2">
             <div class="garis"></div>
             <div class="choice">
-                <h1>War Base</h1>
-                <h1>Space Base</h1>
-                <h1>Troll Base</h1>
+                <h1>Looting</h1>
+                <h1>Spam Trops</h1>
+                <h1>Pro Level</h1>
             </div>
         </div>
     </div>
@@ -769,10 +769,10 @@
 <!-- load data api -->
 <script>
     const dataPilihanKategori = [
-        "warBase", "spaceBase", "baseTrolls"
+        "looting", "spamTrops", "proLevel"
     ]
     const dataPilihanKategori2 = [
-        "War Base 👺", "Space Base 🦀", "Base Trolls 😂"
+        "Looting 🧐", "Spam Trops🦀", "Pro Level 🤫"
     ]
 
     
@@ -787,14 +787,15 @@
 
 
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const wrapper = document.querySelector(".wrapper");
     ambilData(memilihTOWNHALL, memilihKATEGORI, urutkan);
 
 
 
+    let angkaTampil = 6;
+    let dataTh = [];
     async function ambilData(townhall, kategori, urutkan=0){
-        const wrapper = document.querySelector(".wrapper");
         wrapper.innerHTML = "";
-        let dataTh = [];
         try {
             wrapper.innerHTML = `
                         <div class="tiga">
@@ -814,7 +815,7 @@
             `;
 
             console.log(urutkan);
-            const data = await fetch("/api/base/"+townhall+"/"+dataPilihanKategori[kategori]+"/"+urutkan);
+            const data = await fetch("/api/pasukan/"+townhall+"/"+dataPilihanKategori[kategori]+"/"+urutkan);
             if(!data.ok){
                 throw new Error("Gagal mengambil data");
             }
@@ -825,9 +826,12 @@
             jumlahData = 0;
             visualkanThTerpilih(memilihTOWNHALL);
             wrapper.innerHTML = `
-                <div class="tiga">
+                <div class="tiga" style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-direction: column; line-height: 1;">
                     <br>
-                    <h1>tidak ada data untuk townhall ${memilihTOWNHALL}</h1>
+                    <h2>tidak ada data untuk townhall ${memilihTOWNHALL}<br></h2>
+                    <h1>
+                        😔🙏
+                    </h1>
                     <br>
                 </div>
             `;
@@ -869,7 +873,7 @@
                     }
     
                     const card = `
-                    <a href="/aplikasi/base/${kategori}/${id}" class="card">
+                    <a href="/aplikasi/pasukan/${memilihTOWNHALL}/${dataPilihanKategori[kategori]}/${id}" class="card">
                         <div class="card-content">
                             <div class="embel">
                                 <div class="id">
@@ -893,20 +897,26 @@
     
                         tiga = "";
                         
-                        if(dataTh.data.length - iInt <= 3){
+                        if(angkaTampil - iInt <= 3){
+                        } else {
                             wrapper.innerHTML += selingan;
                         }
                     }
+                    if(iInt+1 >= angkaTampil){
+                        break;
+                    }
                 }
     
-                wrapper.innerHTML += `
-                <div class="tiga">
-                    ${tiga}
-                </div>
-                `;
+                if(dataTh.data.length > angkaTampil - 6){
+                    wrapper.innerHTML += `
+                    <div class="tiga">
+                        ${tiga}
+                    </div>
+                    `;
+                }
                 visualkanThTerpilih(memilihTOWNHALL);
     
-                if(dataTh.data.length > 6){
+                if(dataTh.data.length > angkaTampil){
                     wrapper.innerHTML += nextData;
                 } else {
                 }
@@ -914,6 +924,15 @@
         }
     }
 
+</script>
+<script>
+    wrapper.addEventListener("click", function(event){
+        const targetElement = event.target.closest('.nextData');
+        if (targetElement && wrapper.contains(targetElement)) {
+            angkaTampil += 6;
+            ambilData(memilihTOWNHALL, memilihKATEGORI, urutkan);
+        }
+    });
 </script>
 
 
@@ -936,6 +955,7 @@
     const tampilanThTerpilih = document.querySelector(".gambarTh img")
     pilihanTh.forEach((ini, i) => {
         ini.addEventListener("click", function(){
+            angkaTampil = 6;
             const iInt = parseInt(i);
             memilihTOWNHALL = iInt + 1;
             visualkanThTerpilih(iInt + 1);
@@ -951,6 +971,7 @@
     const gantiTulisan = document.querySelector(".memilihKategori .tulisan h1")
     pilihanKategori.forEach((ini, i) => {
         ini.addEventListener("click", function(){
+            angkaTampil = 6;
             const iInt = parseInt(i);
             memilihKATEGORI = iInt;
             memilihKategori.classList.toggle('sedangMemilih');
@@ -965,7 +986,7 @@
     visualkanThTerpilih(memilihTOWNHALL);
     function visualkanThTerpilih(angkas){
         tampilanThTerpilih.src = `/image/thHd/th${angkas}.webp`;
-        tampilkanHasil.innerHTML = `Hasil base Untuk TH ${angkas} :<br>
+        tampilkanHasil.innerHTML = `Hasil pasukan Untuk TH ${angkas} :<br>
             <small style="opacity: .4; font-weight: 400;">base di temukan : ${jumlahData}</small>`;
         localStorage.setItem("memilihTOWNHALL", angkas);
     }

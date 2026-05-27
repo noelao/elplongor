@@ -27,6 +27,13 @@ aplikasi.get('/pasukan', (req, res) => {
 });
 
 
+aplikasi.get('/pasukan/:th/:kategori/:id', (req, res) => {
+  res.render('aplikasi/pasukanTerpilih');
+});
+
+
+
+
 
 
 
