@@ -121,10 +121,13 @@
                 wrapper.innerHTML = `
                 
     <div class="header">
+        <h1 style="padding:0 0 1rem 0;">
+            ${data.name}
+        </h1>
         <div class="uploader">
             <h2>Uploader :</h2>
-            <h3>noelao</h3>
-            <small>jangan kemana-mana</small>
+            <h3>${data.uploader.nama}</h3>
+            <small>${data.uploader.pesan}</small>
         </div>
         <div class="bawah">
             <a href="${data.link}" class="copy tombol">

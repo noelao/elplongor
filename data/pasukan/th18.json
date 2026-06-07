@@ -10,7 +10,7 @@
                 "pesan":"ambil kolong a dan c dengan hero dan spam valkyrie dari sisi b;"
                 },
                 "rating":4,
-                "name":"pasukan",
+                "name":"Undead Valkyrie",
                 "th":18,
                 "link":"https://link.clashofclans.com/id?action=CopyArmy&army=h2p8e4_34-1p4e20_17-7p11e57_56-4p10e12_40i1x1-6x12-1x75-1x82-1x135d1x98-2x35u39x12-2x82-1x97-1x4-1x91-1x87-1x75s2x3-4x10-1x35-1x2",
                 "image":"/image/pasukan/th18/pasukan1.jpeg"
@@ -23,31 +23,15 @@
         [
             {
                 "id":1,
-                "rating":5,
-                "name":"dpasukan",
-                "th":18,
-                "link":"ini.com"
-            },
-            {
-                "id":1,
+                "uploader":{
+                "nama":"noelao",
+                "pesan":"ambil kolong a dan c dengan hero dan spam valkyrie dari sisi b;"
+                },
                 "rating":4,
-                "name":"dpasukan",
+                "name":"Undead Valkyrie",
                 "th":18,
-                "link":"ini.com"
-            },
-            {
-                "id":1,
-                "rating":5,
-                "name":"dpasukan",
-                "th":18,
-                "link":"ini.com"
-            },
-            {
-                "id":1,
-                "rating":3,
-                "name":"dpasukan",
-                "th":18,
-                "link":"ini.com"
+                "link":"https://link.clashofclans.com/id?action=CopyArmy&army=h2p8e4_34-1p4e20_17-7p11e57_56-4p10e12_40i1x1-6x12-1x75-1x82-1x135d1x98-2x35u39x12-2x82-1x97-1x4-1x91-1x87-1x75s2x3-4x10-1x35-1x2",
+                "image":"/image/pasukan/th18/pasukan1.jpeg"
             }
         ]
     },
@@ -55,26 +39,18 @@
         "kategori":"proLevel",
         "data":
         [
+            
             {
                 "id":1,
-                "rating":5,
-                "name":"dpasukan",
-                "th":18,
-                "link":"ini.com"
-            },
-            {
-                "id":2,
+                "uploader":{
+                "nama":"noelao",
+                "pesan":"queen walk pride"
+                },
                 "rating":4,
-                "name":"dpasukan",
+                "name":"Queen Walk/Charge",
                 "th":18,
-                "link":"ini.com"
-            },
-            {
-                "id":3,
-                "rating":5,
-                "name":"dpasukan",
-                "th":18,
-                "link":"ini.com"
+                "link":"https://link.clashofclans.com/id?action=CopyArmy&army=h1p4e15_16-2p8e34_4-4p10e50_40-0p11e51_10i1x1-1x82-6x12-1x75-1x135d1x9-1x5-1x98u5x7-1x59-3x23-4x1-1x0-2x82-1x6-1x58-2x28-28x11-2x5-1x97-1x91-1x92-1x75s2x2-3x35-1x5-1x120-1x53",
+                "image":"/image/pasukan/th18/pasukan2.jpeg"
             }
         ]
     }

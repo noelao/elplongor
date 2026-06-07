@@ -880,6 +880,9 @@
                                 <div class="id">
                                     ${dataaa.id}
                                 </div>
+                                <small style="position:absolute; left:2rem; top: .4rem; background-color:black; padding: .2rem .5rem; border-radius:.75rem;">
+                                    ${dataaa.name}
+                                </small>
                                 <div class="star-display" style="--rating: ${dataaa.rating};" aria-label="Rating 3.5 dari 5"></div>
                             </div>
                             ${image}
@@ -921,6 +924,20 @@
                     wrapper.innerHTML += nextData;
                 } else {
                 }
+            } else {
+                await delay(1000);
+                jumlahData = 0;
+                visualkanThTerpilih(memilihTOWNHALL);
+                wrapper.innerHTML = `
+                    <div class="tiga" style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-direction: column; line-height: 1;">
+                        <br>
+                        <h2>tidak ada data untuk townhall ${memilihTOWNHALL}<br></h2>
+                        <h1>
+                            😔🙏
+                        </h1>
+                        <br>
+                    </div>
+                `;
             }
         }
     }
